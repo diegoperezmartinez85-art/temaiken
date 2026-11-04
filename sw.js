@@ -1,5 +1,5 @@
 // Bioparque Temaikèn · mapa offline (Nexos)
-const C='tmk-v1';
+const C='tmk-v2';
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(C).then(c=>c.add('/')).catch(()=>{}))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 function put(k,res){if(res&&res.ok){const cp=res.clone();caches.open(C).then(c=>c.put(k,cp))}return res}
