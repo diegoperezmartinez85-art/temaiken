@@ -1,11 +1,12 @@
 // Bioparque Temaikèn · mapa offline (Nexos)
-const C='tmk-v3';
+const C='tmk-v4';
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(C).then(c=>c.add(new Request('/',{cache:'reload'}))).catch(()=>{}))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 function put(k,res){if(res&&res.ok){const cp=res.clone();caches.open(C).then(c=>c.put(k,cp))}return res}
 self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET')return;const u=new URL(r.url);
  if(u.origin===location.origin){
   if(u.searchParams.has('chk'))return;
+  if(u.pathname==='/video'||u.pathname.startsWith('/video/'))return; // la pagina del video va siempre por red
   if(r.mode==='navigate'||u.pathname==='/'||u.pathname==='/index.html'){
    // con ?v= (actualización pedida): primero la red; si no, la copia guardada al instante y se renueva en segundo plano
    if(u.searchParams.has('v')){e.respondWith(fetch(r,{cache:'no-store'}).then(x=>put('/',x)).catch(()=>caches.match('/').then(m=>m||Response.error())));return}
