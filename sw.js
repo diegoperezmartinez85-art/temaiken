@@ -6,7 +6,7 @@ function put(k,res){if(res&&res.ok){const cp=res.clone();caches.open(C).then(c=>
 self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET')return;const u=new URL(r.url);
  if(u.origin===location.origin){
   if(u.searchParams.has('chk'))return;
-  if(u.pathname==='/video'||u.pathname.startsWith('/video/'))return; // la pagina del video va siempre por red
+  if(u.pathname==='/video'||u.pathname.startsWith('/video/')||u.pathname.startsWith('/demo'))return; // la pagina del video va siempre por red
   if(r.mode==='navigate'||u.pathname==='/'||u.pathname==='/index.html'){
    // con ?v= (actualización pedida): primero la red; si no, la copia guardada al instante y se renueva en segundo plano
    if(u.searchParams.has('v')){e.respondWith(fetch(r,{cache:'no-store'}).then(x=>put('/',x)).catch(()=>caches.match('/').then(m=>m||Response.error())));return}

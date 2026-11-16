@@ -1,0 +1,68 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo · Mapa del Bioparque Temaikèn</title><meta name="robots" content="noindex">
+<style>
+:root{--bg1:#0b1712;--bg2:#06100c;--ink:#e8f5ee;--mut:#9fc2b0;--acc:#34d399}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:radial-gradient(1200px 800px at 30% 20%,#123326,transparent 60%),radial-gradient(900px 700px at 85% 90%,#0e2a3a,transparent 60%),var(--bg2);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:7vw}
+.side{width:280px;display:flex;flex-direction:column;gap:18px}
+.side h1{font-size:30px;line-height:1.15;font-weight:800;letter-spacing:-.3px}
+.side h1 span{color:var(--acc)}
+.side p{color:var(--mut);font-size:15px;line-height:1.5}
+.qr{display:flex;align-items:center;gap:14px;padding:14px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+.qr img{width:104px;height:104px;border-radius:10px;background:#fff;padding:6px}
+.qr b{display:block;font-size:15px;margin-bottom:4px}.qr small{color:var(--mut);font-size:13px;line-height:1.4}
+.by{display:flex;align-items:center;gap:8px;color:#6f8f80;font-size:12.5px;margin-top:6px}
+.phone{position:relative;width:418px;height:872px;flex:none;transform-origin:center center}
+.body{position:absolute;inset:0;border-radius:66px;background:linear-gradient(145deg,#2b2f33,#121416 40%,#1c1f22);box-shadow:0 0 0 2px #3a3f45,0 40px 90px rgba(0,0,0,.6),inset 0 0 0 2px #050607}
+.btn{position:absolute;background:linear-gradient(90deg,#24282c,#3a3f45);border-radius:3px}
+.screen{position:absolute;left:14px;top:14px;width:390px;height:844px;border-radius:54px;overflow:hidden;background:#000}
+.status{position:absolute;left:0;right:0;top:0;height:47px;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 38px;color:#fff;font:600 16px -apple-system,system-ui,sans-serif;background:#0f0f11;pointer-events:none}
+.island{position:absolute;left:50%;top:11px;width:122px;height:35px;margin-left:-61px;border-radius:20px;background:#000;z-index:3}
+.icons{display:flex;gap:6px;align-items:center}
+.icons i{display:block}
+iframe{position:absolute;left:0;top:47px;width:390px;height:797px;border:0;background:#0f0f11}
+.home{position:absolute;left:50%;bottom:8px;width:134px;height:5px;margin-left:-67px;border-radius:3px;background:rgba(255,255,255,.55);z-index:3;pointer-events:none}
+.tools{position:fixed;right:16px;top:14px;display:flex;gap:8px;opacity:.35;transition:.2s}
+.tools:hover{opacity:1}
+.tools button{height:34px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.35);color:#cfe3d8;font:600 12.5px system-ui;cursor:pointer}
+@media (max-width:900px){.side{display:none}}
+</style></head><body>
+<div class="wrap">
+ <div class="side">
+  <h1>Mapa interactivo del <span>Bioparque Temaikèn</span></h1>
+  <p>El visitante escanea un QR y el mapa se abre en su celular, sin instalar nada. Lo ubica, lo guía caminando hasta cada animal y le muestra lo que tiene cerca.</p>
+  <div class="qr"><img src="qr.png" alt="QR del mapa"><div><b>Probalo ahora</b><small>Escaneá con la cámara del celular<br>temaiken.nexosmaps.com</small></div></div>
+  <div class="by">Un desarrollo de Nexos</div>
+ </div>
+ <div class="phone" id="ph">
+  <div class="body"></div>
+  <div class="btn" style="left:-3px;top:170px;width:4px;height:34px"></div>
+  <div class="btn" style="left:-3px;top:232px;width:4px;height:62px"></div>
+  <div class="btn" style="left:-3px;top:308px;width:4px;height:62px"></div>
+  <div class="btn" style="right:-3px;top:260px;width:4px;height:96px"></div>
+  <div class="screen">
+   <div class="status"><span id="clk">10:30</span><span class="icons">
+    <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="#fff"/><rect x="5" y="5.5" width="3" height="6.5" rx="1" fill="#fff"/><rect x="10" y="3" width="3" height="9" rx="1" fill="#fff"/><rect x="15" y="0" width="3" height="12" rx="1" fill="#fff"/></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 11.5 5.6 9a3.4 3.4 0 0 1 4.8 0zM3.4 6.8a6.6 6.6 0 0 1 9.2 0l-1.4 1.4a4.6 4.6 0 0 0-6.4 0zM1.2 4.6a9.8 9.8 0 0 1 13.6 0l-1.4 1.4a7.8 7.8 0 0 0-10.8 0z" fill="#fff"/></svg>
+    <svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="22" height="12" rx="3.5" fill="none" stroke="rgba(255,255,255,.5)"/><rect x="2.5" y="2.5" width="16" height="8" rx="2" fill="#fff"/><rect x="24" y="4.5" width="2" height="4" rx="1" fill="rgba(255,255,255,.5)"/></svg>
+   </span></div>
+   <div class="island"></div>
+   <iframe id="app" title="Mapa del Bioparque Temaikèn" allow="geolocation; autoplay; clipboard-write"></iframe>
+   <div class="home"></div>
+  </div>
+ </div>
+</div>
+<div class="tools"><button id="rs" title="Vuelve a mostrar la bienvenida">Reiniciar demo</button><button id="fs">Pantalla completa</button></div>
+<script>
+try{localStorage.setItem('tmk_inst',String(Date.now()))}catch(e){}
+const app=document.getElementById('app'),ph=document.getElementById('ph');
+function load(){app.src='/?demo='+Date.now()}
+load();
+function fit(){const s=Math.min((innerHeight-36)/872,(innerWidth-(innerWidth>900?400:24))/418,1.15);ph.style.transform='scale('+s+')';ph.style.margin=(-(872*(1-s))/2)+'px '+(-(418*(1-s))/2)+'px'}
+addEventListener('resize',fit);fit();
+function clk(){const d=new Date();document.getElementById('clk').textContent=d.getHours()+':'+String(d.getMinutes()).padStart(2,'0')}
+clk();setInterval(clk,10000);
+document.getElementById('rs').onclick=()=>{try{localStorage.removeItem('tmk_seen');localStorage.setItem('tmk_inst',String(Date.now()))}catch(e){}load()};
+document.getElementById('fs').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen().catch(()=>{})};
+</script></body></html>
