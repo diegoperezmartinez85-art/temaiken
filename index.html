@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es">
-<head><meta name="nx-build" content="11171152"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1f6f3f"><link rel="apple-touch-icon" href="/icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Temaikèn">
+<head><meta name="nx-build" content="11171203"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1f6f3f"><link rel="apple-touch-icon" href="/icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Temaikèn">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#1f6f3f">
@@ -870,7 +870,16 @@ body.sh .lva{display:none}
 #lvcu b{display:block;font:800 11px Nunito;letter-spacing:1.2px;text-transform:uppercase;color:#15803d;margin-bottom:2px}
 #adc i img{width:100%;height:100%;object-fit:contain;background:#fff;border-radius:12px}
 body.mini #lvf,body.mini #lvcu{display:none}
-.lvl{flex:none;width:38px;height:42px;border-radius:14px;margin-left:auto;display:grid;place-items:center;background:#fff;color:var(--g);font:800 12.5px Nunito;box-shadow:inset 0 0 0 1.5px rgba(46,148,80,.35)}
+.lvl{flex:none;height:42px;padding:0 9px;border-radius:14px;margin-left:auto;display:flex;align-items:center;gap:5px;background:#fff;color:var(--g);font:800 12px Nunito;box-shadow:inset 0 0 0 1.5px rgba(46,148,80,.35)}
+.lvl svg{width:22px;height:15px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+.lvlm{position:fixed;z-index:45;width:170px;padding:6px;border-radius:16px;background:#fff;box-shadow:0 14px 36px rgba(23,50,38,.28);display:none}
+.lvlm.on{display:block;animation:lvin .2s ease-out}
+.lvlm button{display:flex;align-items:center;gap:10px;width:100%;height:44px;padding:0 10px;border-radius:11px;font:800 14px Nunito;color:var(--ink);text-align:left}
+.lvlm button svg{width:26px;height:18px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex:none}
+.lvlm button.on{background:#e8f6ee;color:var(--g)}
+.lvlh{position:fixed;z-index:44;transform:translate(-50%,-6px);opacity:0;transition:.3s;background:#173226;color:#fff;font:800 12.5px Nunito;padding:7px 11px;border-radius:11px;pointer-events:none;white-space:nowrap}
+.lvlh::before{content:'';position:absolute;left:50%;top:-5px;margin-left:-6px;border:6px solid transparent;border-top:0;border-bottom-color:#173226}
+.lvlh.on{opacity:1;transform:translate(-50%,0)}
 .lvl+.lvb{margin-left:6px}
 .lvab{position:fixed;left:12px;z-index:15;bottom:calc(env(safe-area-inset-bottom,0px) + 150px);display:flex;align-items:center;gap:7px;height:38px;padding:0 12px 0 9px;border-radius:19px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#3b2400;font:800 13px Nunito;box-shadow:0 4px 14px rgba(180,110,0,.35)}
 .lvab svg{width:20px;height:20px}.lvab b{font-weight:800}
@@ -903,6 +912,13 @@ body.sh .lvab,body.mini .lvab{display:none!important}
 .als i,.lvpop i{overflow:hidden}.als i img,.lvpop i img{width:100%;height:100%;object-fit:cover;display:block}
 </style><script>// ===== NEXOS · contenido publicado desde el panel (avisos, fichas, patrocinadores, álbum, idiomas, estadísticas) =====
 (function(){
+// Carrusel de categorías: en la PC se puede arrastrar con el mouse y mover con la rueda
+document.querySelectorAll('.chips').forEach(c=>{let down=false,sx=0,sl=0,moved=false;
+ c.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;sx=e.clientX;sl=c.scrollLeft});
+ addEventListener('pointermove',e=>{if(!down)return;const d=e.clientX-sx;if(Math.abs(d)>4){moved=true;c.style.cursor='grabbing'}c.scrollLeft=sl-d});
+ addEventListener('pointerup',()=>{down=false;c.style.cursor=''});
+ c.addEventListener('click',e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false}},true);
+ c.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){c.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});c.style.cursor='grab'});
 // Hasta que Temaikèn apruebe, el contenido del panel se ve solo en la demo (?demo). Con pub:true se ve para todos.
 const API='https://nexos-mapas.diegoperezmartinez85.workers.dev',B='temaiken';let DEMO=/[?&]demo/.test(location.search);try{if(DEMO)sessionStorage.setItem('tmk_demo','1');else DEMO=sessionStorage.getItem('tmk_demo')==='1'}catch(e){}
 if(!DEMO){fetch(API+'/data?b='+B).then(r=>r.json()).then(d=>{if(d&&d.pub)init(d)}).catch(()=>{});return}
@@ -931,7 +947,7 @@ const I={bell:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
  share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M5 12v8h14v-8"/></svg>'};
 
 // =================== IDIOMAS ===================
-const LGS=['es','en','pt'],LGN={es:'ES',en:'EN',pt:'PT'};
+const LGS=['es','en','pt'],LGN={es:'ES',en:'EN',pt:'PT'},LGL={es:'Español',en:'English',pt:'Português'},FLAG={"es": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#74acdf\"/><rect y=\"6.67\" width=\"30\" height=\"6.66\" fill=\"#fff\"/><circle cx=\"15\" cy=\"10\" r=\"2.3\" fill=\"#f6b40e\" stroke=\"#85340a\" stroke-width=\".5\"/></svg>", "en": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#012169\"/><path d=\"M0 0l30 20M30 0L0 20\" stroke=\"#fff\" stroke-width=\"4\"/><path d=\"M0 0l30 20M30 0L0 20\" stroke=\"#c8102e\" stroke-width=\"1.6\"/><path d=\"M15 0v20M0 10h30\" stroke=\"#fff\" stroke-width=\"6\"/><path d=\"M15 0v20M0 10h30\" stroke=\"#c8102e\" stroke-width=\"3.4\"/></svg>", "pt": "<svg viewBox=\"0 0 30 20\"><rect width=\"30\" height=\"20\" fill=\"#009c3b\"/><path d=\"M15 2.5 27 10 15 17.5 3 10z\" fill=\"#ffdf00\"/><circle cx=\"15\" cy=\"10\" r=\"4.4\" fill=\"#002776\"/><path d=\"M10.8 9.2q4.2-1.3 8.4 1.6\" stroke=\"#fff\" stroke-width=\".8\" fill=\"none\"/></svg>"};
 let LANG='es';try{LANG=localStorage.getItem(KL)||((navigator.language||'').slice(0,2)==='en'?'en':(navigator.language||'').slice(0,2)==='pt'?'pt':'es')}catch(e){}
 if(!LGS.includes(LANG))LANG='es';
 const L=s=>{if(LANG==='es')return s;const d=DICT[s];return d?d[LANG==='en'?0:1]:s};
@@ -946,10 +962,16 @@ function trAttrs(){const q=$('q');if(q){if(!q.dataset.es)q.dataset.es=q.placehol
 let obsBusy=false;const MO=new MutationObserver(ms=>{if(obsBusy||LANG==='es')return;obsBusy=true;try{ms.forEach(m=>{if(m.type==='characterData')trNode(m.target);else m.addedNodes.forEach(a=>a.nodeType===3?trNode(a):a.nodeType===1&&trTree(a))})}finally{obsBusy=false}});
 MO.observe(document.body,{childList:true,subtree:true,characterData:true});
 function setLang(l){LANG=l;try{localStorage.setItem(KL,l)}catch(e){}document.documentElement.lang=l;obsBusy=true;try{TRACK.forEach(n=>{if(!n.isConnected){TRACK.delete(n);return}trNode(n)});trTree(document.body);trAttrs()}finally{obsBusy=false}
- lg.textContent=LGN[l];paintAlert();paintAlbBtn();if(cur&&$('sheet').classList.contains('on')&&!document.body.classList.contains('mini'))sheetLive(cur);if($('mlv').classList.contains('on'))openNews();if($('mal').classList.contains('on'))openAlb()}
-const lg=document.createElement('button');lg.className='lvl';lg.id='lvlg';lg.setAttribute('aria-label','Idioma / Language');lg.textContent=LGN[LANG];
+ lg.innerHTML=FLAG[l]+'<b>'+LGN[l]+'</b>';lgm.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));paintAlert();paintAlbBtn();if(cur&&$('sheet').classList.contains('on')&&!document.body.classList.contains('mini'))sheetLive(cur);if($('mlv').classList.contains('on'))openNews();if($('mal').classList.contains('on'))openAlb()}
+const lg=document.createElement('button');lg.className='lvl';lg.id='lvlg';lg.setAttribute('aria-label','Idioma / Language / Idioma');lg.innerHTML=FLAG[LANG]+'<b>'+LGN[LANG]+'</b>';
+const lgm=document.createElement('div');lgm.className='lvlm';lgm.id='lvlm';lgm.innerHTML=LGS.map(l=>'<button data-l="'+l+'" class="'+(l===LANG?'on':'')+'">'+FLAG[l]+'<span>'+LGL[l]+'</span></button>').join('');document.body.appendChild(lgm);
+const lgClose=()=>lgm.classList.remove('on');
 lg.addEventListener('pointerdown',e=>e.stopPropagation());
-lg.addEventListener('click',e=>{e.stopPropagation();const i=(LGS.indexOf(LANG)+1)%3;setLang(LGS[i]);toast({es:'Español',en:'English',pt:'Português'}[LGS[i]])});
+lg.addEventListener('click',e=>{e.stopPropagation();const r=lg.getBoundingClientRect();lgm.style.top=(r.bottom+8)+'px';lgm.style.left=Math.max(8,Math.min(innerWidth-178,r.left+r.width/2-85))+'px';lgm.classList.toggle('on')});
+lgm.querySelectorAll('button').forEach(b=>b.onclick=e=>{e.stopPropagation();lgClose();if(b.dataset.l!==LANG){setLang(b.dataset.l);toast(LGL[b.dataset.l])}});
+document.addEventListener('pointerdown',e=>{if(!lgm.contains(e.target)&&e.target!==lg)lgClose()});
+// la primera vez, un globito que avisa que se puede cambiar el idioma
+try{if(!localStorage.getItem('tmk_lghint')){setTimeout(()=>{if(document.querySelector('.modal.on'))return;const r=lg.getBoundingClientRect();const h=document.createElement('div');h.className='lvlh';h.innerHTML='English · Português';h.style.top=(r.bottom+10)+'px';h.style.left=(r.left+r.width/2)+'px';document.body.appendChild(h);setTimeout(()=>h.classList.add('on'),30);setTimeout(()=>{h.classList.remove('on');setTimeout(()=>h.remove(),400)},4200);localStorage.setItem('tmk_lghint','1')},2600)}}catch(e){}
 
 // =================== ESTADÍSTICAS (anónimas, sin datos personales) ===================
 const ST={sel:{},rt:{},ad:{},nw:0,alb:0,q:[]};let stDirty=false;
@@ -1064,5 +1086,6 @@ if(LANG!=='es')setTimeout(()=>setLang(LANG),50);
 
 
 
-<style>.updb{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 12px);z-index:60;display:flex;align-items:center;gap:10px;max-width:calc(100% - 24px);padding:12px 16px;border:0;border-radius:16px;background:#1f6f3f;color:#fff;font:800 14px Nunito,system-ui,sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.3);cursor:pointer;white-space:nowrap;width:max-content}.updb svg{width:20px;height:20px;flex:none}</style><script>(function(){var B='11171152';var shown=false;function chk(){if(shown)return;fetch(location.pathname+'?chk='+Date.now(),{cache:'no-store'}).then(function(r){return r.text()}).then(function(t){var m=t.match(/<meta name="nx-build" content="([0-9]+)"/);if(m&&m[1]>B){shown=true;var b=document.createElement('button');b.className='updb';b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Hay una versión nueva, tocá para actualizar';b.onclick=function(){b.textContent='Actualizando…';try{navigator.serviceWorker&&navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(x){x.update()})})}catch(e){}location.replace(location.pathname+'?v='+m[1]+location.hash)};document.body.appendChild(b)}}).catch(function(){})}setTimeout(chk,2500);setInterval(chk,10*60*1000);document.addEventListener('visibilitychange',function(){if(!document.hidden)chk()})})()</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "a8059f322e8f40e684d926ac94b56d82"}'></script></body>
+
+<style>.updb{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 12px);z-index:60;display:flex;align-items:center;gap:10px;max-width:calc(100% - 24px);padding:12px 16px;border:0;border-radius:16px;background:#1f6f3f;color:#fff;font:800 14px Nunito,system-ui,sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.3);cursor:pointer;white-space:nowrap;width:max-content}.updb svg{width:20px;height:20px;flex:none}</style><script>(function(){var B='11171203';var shown=false;function chk(){if(shown)return;fetch(location.pathname+'?chk='+Date.now(),{cache:'no-store'}).then(function(r){return r.text()}).then(function(t){var m=t.match(/<meta name="nx-build" content="([0-9]+)"/);if(m&&m[1]>B){shown=true;var b=document.createElement('button');b.className='updb';b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Hay una versión nueva, tocá para actualizar';b.onclick=function(){b.textContent='Actualizando…';try{navigator.serviceWorker&&navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(x){x.update()})})}catch(e){}location.replace(location.pathname+'?v='+m[1]+location.hash)};document.body.appendChild(b)}}).catch(function(){})}setTimeout(chk,2500);setInterval(chk,10*60*1000);document.addEventListener('visibilitychange',function(){if(!document.hidden)chk()})})()</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "a8059f322e8f40e684d926ac94b56d82"}'></script></body>
 </html>
