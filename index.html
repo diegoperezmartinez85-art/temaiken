@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es">
-<head><meta name="nx-build" content="11171026"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1f6f3f"><link rel="apple-touch-icon" href="/icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Temaikèn">
+<head><meta name="nx-build" content="11171048"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1f6f3f"><link rel="apple-touch-icon" href="/icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Temaikèn">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#1f6f3f">
@@ -899,6 +899,8 @@ body.sh .lvab,body.mini .lvab{display:none!important}
 @keyframes lvsp{0%{transform:scale(.3) rotate(-30deg)}70%{transform:scale(1.15) rotate(8deg)}100%{transform:none}}
 .lvpop small{display:block;font:800 11px Nunito;letter-spacing:1px;text-transform:uppercase;color:#b7791f}.lvpop b{display:block;font:700 18px Fredoka,Nunito;color:var(--ink)}.lvpop span{font:800 12px Nunito;color:var(--mut)}
 @media (max-width:480px){.brand .loc{width:42px;padding:0;justify-content:center;margin-left:6px}.brand .loc span{display:none}}
+
+.als i,.lvpop i{overflow:hidden}.als i img,.lvpop i img{width:100%;height:100%;object-fit:cover;display:block}
 </style><script>// ===== NEXOS · contenido publicado desde el panel (avisos, fichas, patrocinadores, álbum, idiomas, estadísticas) =====
 (function(){
 // Hasta que Temaikèn apruebe, el contenido del panel se ve solo en la demo (?demo). Con pub:true se ve para todos.
@@ -1010,17 +1012,18 @@ function openAlb(){const done=ALB.length>=ANI.length;const pr=DATA.game?TX(DATA.
  h+='<div class="alp"><div><b>'+ALB.length+'</b> / '+ANI.length+' '+L('figuritas')+'</div><i><em style="width:'+pct+'%"></em></i></div>';
  if(done)h+='<div class="aldone"><b>'+L('¡Completaste el álbum!')+'</b>'+(pr?'<span>'+esc(pr)+'</span>':'')+'<small>'+new Date().toLocaleDateString({es:'es-AR',en:'en-US',pt:'pt-BR'}[LANG],{timeZone:TZ})+'</small></div>';
  else if(pr)h+='<div class="alpr"><b>'+L('Premio')+'</b>'+esc(pr)+'</div>';
- h+='<div class="alg">'+ANI.map(p=>{const got=ALB.includes(p.n);const c=colOf(p);return '<button class="als'+(got?' got':'')+'" data-id="'+p.id+'"><i style="'+(got?'background:'+c:'')+'">'+(got?(IC[p.i]||IC.paw):'?')+'</i><span>'+esc(pName(p))+'</span></button>'}).join('')+'</div>';
+ h+='<div class="alg">'+ANI.map(p=>{const got=ALB.includes(p.n);const c=colOf(p);return '<button class="als'+(got?' got':'')+'" data-id="'+p.id+'"><i style="'+(got?'background:'+c:'')+'">'+(got?stk(p):'?')+'</i><span>'+esc(pName(p))+'</span></button>'}).join('')+'</div>';
  h+='<button class="alsh">'+I.share+L('Compartir mi álbum')+'</button>';
  $('alb').innerHTML=h;
  $('alb').querySelectorAll('.als').forEach(b=>b.onclick=()=>{const p=POIS.find(x=>x.id===+b.dataset.id);ma.classList.remove('on');if(p)select(p)});
  $('alb').querySelector('.alsh').onclick=async()=>{const t={es:'¡Llevo '+ALB.length+' de '+ANI.length+' figuritas en el álbum del Bioparque Temaikèn!',en:'I have '+ALB.length+' of '+ANI.length+' stickers in the Bioparque Temaikèn album!',pt:'Tenho '+ALB.length+' de '+ANI.length+' figurinhas no álbum do Bioparque Temaikèn!'}[LANG];const url=location.origin+'/';
   try{if(navigator.share){await navigator.share({title:'Temaikèn',text:t,url});return}}catch(e){}try{await navigator.clipboard.writeText(t+' '+url);toast(L('Link copiado'))}catch(e){}};
  ma.classList.add('on')}
+const stk=p=>{const f=fichOf(p);return f&&f.img?'<img src="'+imgU(f.img)+'" alt="">':(IC[p.i]||IC.paw)};
 function near(p){if(!(typeof myPos!=='undefined'&&myPos&&myPos.in))return false;const pts=POIS.filter(q=>q.n===p.n);return pts.some(q=>Math.hypot(q.p[0]-myPos.s[0],q.p[1]-myPos.s[1])/GEO.K<=60)}
 function tryStick(p){if(!gameOn()||!(p.k==='animal'||p.k==='zone')||ALB.includes(p.n))return false;if(!(DEMO||near(p)))return false;
  ALB.push(p.n);try{localStorage.setItem(KG,JSON.stringify(ALB))}catch(e){}ST.alb++;stDirty=true;paintAlbBtn();
- const pop=document.createElement('div');pop.className='lvpop';pop.innerHTML='<i style="background:'+colOf(p)+'">'+(IC[p.i]||IC.paw)+'</i><div><small>'+L('¡Nueva figurita!')+'</small><b>'+esc(pName(p))+'</b><span>'+ALB.length+' / '+ANI.length+'</span></div>';
+ const pop=document.createElement('div');pop.className='lvpop';pop.innerHTML='<i style="background:'+colOf(p)+'">'+stk(p)+'</i><div><small>'+L('¡Nueva figurita!')+'</small><b>'+esc(pName(p))+'</b><span>'+ALB.length+' / '+ANI.length+'</span></div>';
  document.body.appendChild(pop);setTimeout(()=>pop.classList.add('on'),30);setTimeout(()=>{pop.classList.remove('on');setTimeout(()=>pop.remove(),400)},2600);return true}
 // QR en el recinto: ?fig=<id> pega la figurita
 try{const fq=new URLSearchParams(location.search).get('fig');if(fq){const p=POIS.find(x=>x.id===+fq);if(p&&gameOn()&&!ALB.includes(p.n)&&(p.k==='animal'||p.k==='zone')){ALB.push(p.n);localStorage.setItem(KG,JSON.stringify(ALB));ST.alb++;stDirty=true;setTimeout(()=>{select(p);openAlb()},900)}}}catch(e){}
@@ -1059,5 +1062,6 @@ if(LANG!=='es')setTimeout(()=>setLang(LANG),50);
 })();
 </script><!--/TMKLIVE-->
 
-<style>.updb{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 12px);z-index:60;display:flex;align-items:center;gap:10px;max-width:calc(100% - 24px);padding:12px 16px;border:0;border-radius:16px;background:#1f6f3f;color:#fff;font:800 14px Nunito,system-ui,sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.3);cursor:pointer;white-space:nowrap;width:max-content}.updb svg{width:20px;height:20px;flex:none}</style><script>(function(){var B='11171026';var shown=false;function chk(){if(shown)return;fetch(location.pathname+'?chk='+Date.now(),{cache:'no-store'}).then(function(r){return r.text()}).then(function(t){var m=t.match(/<meta name="nx-build" content="([0-9]+)"/);if(m&&m[1]>B){shown=true;var b=document.createElement('button');b.className='updb';b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Hay una versión nueva, tocá para actualizar';b.onclick=function(){b.textContent='Actualizando…';try{navigator.serviceWorker&&navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(x){x.update()})})}catch(e){}location.replace(location.pathname+'?v='+m[1]+location.hash)};document.body.appendChild(b)}}).catch(function(){})}setTimeout(chk,2500);setInterval(chk,10*60*1000);document.addEventListener('visibilitychange',function(){if(!document.hidden)chk()})})()</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "a8059f322e8f40e684d926ac94b56d82"}'></script></body>
+
+<style>.updb{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 12px);z-index:60;display:flex;align-items:center;gap:10px;max-width:calc(100% - 24px);padding:12px 16px;border:0;border-radius:16px;background:#1f6f3f;color:#fff;font:800 14px Nunito,system-ui,sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.3);cursor:pointer;white-space:nowrap;width:max-content}.updb svg{width:20px;height:20px;flex:none}</style><script>(function(){var B='11171048';var shown=false;function chk(){if(shown)return;fetch(location.pathname+'?chk='+Date.now(),{cache:'no-store'}).then(function(r){return r.text()}).then(function(t){var m=t.match(/<meta name="nx-build" content="([0-9]+)"/);if(m&&m[1]>B){shown=true;var b=document.createElement('button');b.className='updb';b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Hay una versión nueva, tocá para actualizar';b.onclick=function(){b.textContent='Actualizando…';try{navigator.serviceWorker&&navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(x){x.update()})})}catch(e){}location.replace(location.pathname+'?v='+m[1]+location.hash)};document.body.appendChild(b)}}).catch(function(){})}setTimeout(chk,2500);setInterval(chk,10*60*1000);document.addEventListener('visibilitychange',function(){if(!document.hidden)chk()})})()</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "a8059f322e8f40e684d926ac94b56d82"}'></script></body>
 </html>
