@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es">
-<head><meta name="nx-build" content="11162130"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1f6f3f"><link rel="apple-touch-icon" href="/icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Temaikèn">
+<head><meta name="nx-build" content="11171026"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1f6f3f"><link rel="apple-touch-icon" href="/icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Temaikèn">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#1f6f3f">
@@ -870,22 +870,54 @@ body.sh .lva{display:none}
 #lvcu b{display:block;font:800 11px Nunito;letter-spacing:1.2px;text-transform:uppercase;color:#15803d;margin-bottom:2px}
 #adc i img{width:100%;height:100%;object-fit:contain;background:#fff;border-radius:12px}
 body.mini #lvf,body.mini #lvcu{display:none}
-</style><script>// ===== NEXOS · contenido publicado desde el panel (avisos, fichas, patrocinadores) =====
+.lvl{flex:none;width:38px;height:42px;border-radius:14px;margin-left:auto;display:grid;place-items:center;background:#fff;color:var(--g);font:800 12.5px Nunito;box-shadow:inset 0 0 0 1.5px rgba(46,148,80,.35)}
+.lvl+.lvb{margin-left:6px}
+.lvab{position:fixed;left:12px;z-index:15;bottom:calc(env(safe-area-inset-bottom,0px) + 150px);display:flex;align-items:center;gap:7px;height:38px;padding:0 12px 0 9px;border-radius:19px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#3b2400;font:800 13px Nunito;box-shadow:0 4px 14px rgba(180,110,0,.35)}
+.lvab svg{width:20px;height:20px}.lvab b{font-weight:800}
+body.sh .lvab,body.mini .lvab{display:none!important}
+.alc{max-height:86vh;text-align:center}
+.alh{width:60px;height:60px;margin:0 auto 8px;border-radius:20px;display:grid;place-items:center;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff;box-shadow:0 8px 20px rgba(245,158,11,.35)}.alh svg{width:34px;height:34px}
+.aldm{margin:-6px 0 10px;font:800 11.5px Nunito;color:#1d4ed8;background:#eff6ff;border-radius:10px;padding:6px 8px}
+.alp{text-align:left;margin:4px 2px 12px}.alp div{font:700 13px Nunito;color:var(--mut)}.alp b{font:700 22px Fredoka,Nunito;color:var(--g)}
+.alp i{display:block;height:10px;border-radius:5px;background:#eef3f0;margin-top:6px;overflow:hidden}.alp em{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,#fbbf24,#f59e0b)}
+.alpr,.aldone{text-align:left;padding:11px 13px;border-radius:14px;background:#fff7e0;color:#7a5200;font:700 13px Nunito;margin-bottom:12px;box-shadow:inset 0 0 0 1.5px #fde68a}
+.alpr b{display:block;font:800 11px Nunito;letter-spacing:1.2px;text-transform:uppercase;color:#b7791f;margin-bottom:2px}
+.aldone{background:linear-gradient(135deg,#fef3c7,#dcfce7);color:#14532d;text-align:center}.aldone b{display:block;font:700 20px Fredoka,Nunito;color:var(--g)}.aldone span{display:block;margin-top:3px}.aldone small{display:block;margin-top:6px;font:800 11px Nunito;opacity:.7}
+.alg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px 6px}
+.als{display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 2px}
+.als i{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#e5ebe7;color:#9aaba2;font:700 22px Fredoka,Nunito;font-style:normal;border:3px dashed #cfd9d3}
+.als.got i{color:#fff;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.18)}
+.als i svg{width:26px;height:26px}
+.als span{font:800 10.5px/1.15 Nunito;color:#94a39b;text-align:center}
+.als.got span{color:var(--ink)}
+.alsh{margin-top:14px;width:100%;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;background:#f1f5f3;font:800 14px Nunito}.alsh svg{width:18px;height:18px}
+.lvsk{display:flex;align-items:center;gap:8px;margin-top:8px;padding:9px 12px;border-radius:12px;background:#f4f7f5;color:#5b7266;font:700 13px Nunito}
+.lvsk svg{width:18px;height:18px;flex:none}.lvsk.got{background:#fff7e0;color:#92400e}
+.lvpop{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 160px);z-index:55;transform:translate(-50%,-20px) scale(.9);opacity:0;transition:.35s cubic-bezier(.2,.8,.2,1);display:flex;align-items:center;gap:12px;padding:12px 16px 12px 12px;border-radius:20px;background:#fff;box-shadow:0 18px 40px rgba(0,0,0,.28),inset 0 0 0 2px #fbbf24;pointer-events:none}
+.lvpop.on{opacity:1;transform:translate(-50%,0) scale(1)}
+.lvpop i{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;border:3px solid #fff;box-shadow:0 0 0 3px #fbbf24;animation:lvsp .7s ease-out}.lvpop i svg{width:26px;height:26px}
+@keyframes lvsp{0%{transform:scale(.3) rotate(-30deg)}70%{transform:scale(1.15) rotate(8deg)}100%{transform:none}}
+.lvpop small{display:block;font:800 11px Nunito;letter-spacing:1px;text-transform:uppercase;color:#b7791f}.lvpop b{display:block;font:700 18px Fredoka,Nunito;color:var(--ink)}.lvpop span{font:800 12px Nunito;color:var(--mut)}
+@media (max-width:480px){.brand .loc{width:42px;padding:0;justify-content:center;margin-left:6px}.brand .loc span{display:none}}
+</style><script>// ===== NEXOS · contenido publicado desde el panel (avisos, fichas, patrocinadores, álbum, idiomas, estadísticas) =====
 (function(){
 // Hasta que Temaikèn apruebe, el contenido del panel se ve solo en la demo (?demo). Con pub:true se ve para todos.
-const API='https://nexos-mapas.diegoperezmartinez85.workers.dev',B='temaiken';let ON=/[?&]demo/.test(location.search);try{if(ON)sessionStorage.setItem('tmk_demo','1');else ON=sessionStorage.getItem('tmk_demo')==='1'}catch(e){}
-if(!ON){fetch(API+'/data?b='+B).then(r=>r.json()).then(d=>{if(d&&d.pub)init(d)}).catch(()=>{});return}
+const API='https://nexos-mapas.diegoperezmartinez85.workers.dev',B='temaiken';let DEMO=/[?&]demo/.test(location.search);try{if(DEMO)sessionStorage.setItem('tmk_demo','1');else DEMO=sessionStorage.getItem('tmk_demo')==='1'}catch(e){}
+if(!DEMO){fetch(API+'/data?b='+B).then(r=>r.json()).then(d=>{if(d&&d.pub)init(d)}).catch(()=>{});return}
 init(null);
-function init(D0){const KD='tmk_live',KS='tmk_live_seen',KA='tmk_live_alert';
+function init(D0){const KD='tmk_live',KS='tmk_live_seen',KA='tmk_live_alert',KL='tmk_lang',KG='tmk_alb';
 const SEED={"news":[{"id":"s1","k":"act","t":"Alimentación de los pelícanos","x":"Vení a ver cómo comen y escuchá a los cuidadores contar cómo viven.","h":"15:00","p":13,"e":"","on":true,"d":"2026-11-16T12:00:00.000Z"},{"id":"s2","k":"act","t":"Charla en el Hospital Veterinario","x":"Historias de animales rescatados y cómo se recuperan.","h":"11:30","p":74,"e":"","on":true,"d":"2026-11-16T12:00:00.000Z"},{"id":"s3","k":"info","t":"Llevá el mapa en tu celular","x":"Tocá Compartir y después Agregar a inicio. Funciona aunque no tengas señal dentro del parque.","h":"","p":null,"e":"","on":true,"d":"2026-11-16T12:00:00.000Z"}],"fich":{"26":{"x":"Es el felino más grande del mundo. Cada tigre tiene un dibujo de rayas único, como una huella digital.","f":"A diferencia de casi todos los gatos, le gusta el agua y es muy buen nadador.","h":"","st":"ok","img":""},"9":{"x":"Pasa gran parte del día dentro del agua para mantenerse fresco y proteger su piel del sol.","f":"Puede aguantar la respiración bajo el agua unos cinco minutos.","h":"","st":"ok","img":""},"24":{"x":"Es el felino más grande de América y está en peligro de extinción en la Argentina.","f":"Tiene una de las mordidas más fuertes entre todos los felinos.","h":"","st":"rest","img":""},"2":{"x":"Viven en grupos familiares. Mientras unas buscan comida, otra se para en dos patas y vigila.","f":"","h":"","st":"ok","img":""}},"ads":[{"id":"a1","on":true,"t":"Combo familiar con bebida","s":"Patio de comidas · 15% mostrando el mapa","u":"","img":"","w":["k:food"]},{"id":"a2","on":true,"t":"Agua fresca y protector solar","s":"Tienda del Bioparque · 2x1 en botellas","u":"","img":"","w":["k:service"]},{"id":"a3","on":true,"t":"Tu marca acompaña a este recinto","s":"Patrocinio de la conservación de la especie","u":"","img":"","w":["k:animal"]},{"id":"a4","on":true,"t":"Imprimí tu foto con el marco del Bioparque","s":"Tienda de fotos · en el momento","u":"","img":"","w":["k:view"]},{"id":"a5","on":true,"t":"Un beneficio para tu próxima visita","s":"Cortesía de un patrocinador del Bioparque","u":"","img":"","w":["k:entrance"]}],"upd":null};
+const DICT={"Acuario":["Aquarium","Aquário"],"Aligátores":["Alligators","Aligátores"],"Anfiteatro":["Amphitheater","Anfiteatro"],"Antílope eland":["Eland antelope","Antílope-eland"],"Atención al visitante":["Visitor services","Atendimento ao visitante"],"Aves de América":["Birds of the Americas","Aves das Américas"],"Aves de Eurasia":["Birds of Eurasia","Aves da Eurásia"],"Aves de Oceanía":["Birds of Oceania","Aves da Oceania"],"Aves de África":["Birds of Africa","Aves da África"],"Avestruz":["Ostrich","Avestruz"],"Baños":["Restrooms","Banheiros"],"Bebedero":["Water fountain","Bebedouro"],"Bichos (insectos)":["Bugs (insects)","Bichos (insetos)"],"Cabras":["Goats","Cabras"],"Calesita":["Carousel","Carrossel"],"Canguros":["Kangaroos","Cangurus"],"Carpinchos":["Capybaras","Capivaras"],"Casuarios":["Cassowaries","Casuares"],"Cebras":["Zebras","Zebras"],"Centro de Eventos":["Event center","Centro de eventos"],"Centro de Interpretación":["Interpretation center","Centro de interpretação"],"Ciervo de los pantanos":["Marsh deer","Cervo-do-pantanal"],"Cine 360°":["360° cinema","Cinema 360°"],"Cóndores":["Condors","Condores"],"El molino":["The windmill","O moinho"],"Estacionamiento":["Parking","Estacionamento"],"Flamenco caribeño":["American flamingo","Flamingo-do-caribe"],"Fotografía":["Photography","Fotografia"],"Gallinas":["Hens","Galinhas"],"Grulla Japonesa":["Red-crowned crane","Grou-japonês"],"Guacamayos":["Macaws","Araras"],"Guanacos":["Guanacos","Guanacos"],"Hipopótamos":["Hippos","Hipopótamos"],"Hospital Veterinario":["Veterinary hospital","Hospital veterinário"],"Ingreso y salida":["Entrance and exit","Entrada e saída"],"Juegos infantiles":["Playground","Parquinho"],"Lemur blanco y negro":["Black-and-white ruffed lemur","Lêmure-preto-e-branco"],"Lemur de cola anillada":["Ring-tailed lemur","Lêmure-de-cauda-anelada"],"Lemur rojo":["Red ruffed lemur","Lêmure-vermelho"],"Loros":["Parrots","Papagaios"],"Mara Patagónica":["Patagonian mara","Mara-da-patagônia"],"Mirador":["Viewpoint","Mirante"],"Mono carayá":["Black howler monkey","Bugio-preto"],"Murciélagos":["Bats","Morcegos"],"Ovejas":["Sheep","Ovelhas"],"Paseriformes":["Songbirds","Pássaros canoros"],"Pelícanos":["Pelicans","Pelicanos"],"Plaza de las Sensaciones":["Sensory plaza","Praça das sensações"],"Primeros auxilios":["First aid","Primeiros socorros"],"Pudúes":["Pudus","Pudus"],"Pumas":["Pumas","Onças-pardas"],"Punto de foto":["Photo spot","Ponto de foto"],"Recuerdos del Bioparque":["Bioparque gift shop","Lembranças do Bioparque"],"Suricatas":["Meerkats","Suricatos"],"Tapires":["Tapirs","Antas"],"Terneros":["Calves","Bezerros"],"Tiburones":["Sharks","Tubarões"],"Tigre de bengala":["Bengal tiger","Tigre-de-bengala"],"Tortuga Leopardo":["Leopard tortoise","Tartaruga-leopardo"],"Tucanes":["Toucans","Tucanos"],"Ualabíes":["Wallabies","Wallabies"],"Vacas":["Cows","Vacas"],"Yaguareté":["Jaguar","Onça-pintada"],"Águila mora":["Black-chested buzzard-eagle","Águia-chilena"],"Área de picnic":["Picnic area","Área de piquenique"],"África":["Africa","África"],"América":["Americas","Américas"],"Asia":["Asia","Ásia"],"Oceanía":["Oceania","Oceania"],"El Lugar de las Aves":["The Bird Place","O Lugar das Aves"],"Patagonia":["Patagonia","Patagônia"],"La Chacra":["The Farm","A Chácara"],"Boleterías y molinetes":["Ticket booths and turnstiles","Bilheterias e catracas"],"Combos y hamburguesas":["Combos and burgers","Combos e hambúrgueres"],"Comidas":["Food","Comidas"],"Comidas rápidas":["Fast food","Lanches rápidos"],"El cartel Temaikèn de la entrada. Sacate la foto con el marco del Bioparque.":["The Temaikèn sign at the entrance. Take your photo with the Bioparque frame.","A placa Temaikèn da entrada. Tire sua foto com a moldura do Bioparque."],"Empanadas":["Empanadas","Empanadas"],"Estacionamiento del Bioparque, sobre la Ruta 25":["Bioparque parking, on Route 25","Estacionamento do Bioparque, na Rota 25"],"Funciones en el día":["Shows during the day","Sessões durante o dia"],"Golosinas, pochoclos y bebidas":["Sweets, popcorn and drinks","Doces, pipoca e bebidas"],"Hamburguesas":["Burgers","Hambúrgueres"],"Hamburguesas (ocasiones especiales)":["Burgers (special occasions)","Hambúrgueres (ocasiões especiais)"],"Helados y cafetería":["Ice cream and coffee","Sorvetes e cafeteria"],"Historias de recuperación":["Recovery stories","Histórias de recuperação"],"Información, alquiler de carritos y sillas de ruedas":["Information, stroller and wheelchair rental","Informações, aluguel de carrinhos e cadeiras de rodas"],"Parrilla (sáb., dom. y feriados)":["Grill (Sat, Sun and holidays)","Churrasco (sáb., dom. e feriados)"],"Pastas y minutas":["Pasta and quick meals","Massas e pratos rápidos"],"Pizzas y pastas":["Pizza and pasta","Pizzas e massas"],"Tiburones, rayas y especies del Paraná":["Sharks, rays and Paraná river species","Tubarões, raias e espécies do Paraná"],"Tienda de recuerdos":["Gift shop","Loja de lembranças"],"Todo":["All","Tudo"],"Animales":["Animals","Animais"],"Comida":["Food","Comida"],"Cerca mío":["Near me","Perto de mim"],"Servicios":["Services","Serviços"],"Favoritos":["Favorites","Favoritos"],"Buscá un animal, comida o servicio":["Search an animal, food or service","Busque um animal, comida ou serviço"],"Estás acá":["You are here","Você está aqui"],"Escuchar":["Listen","Ouvir"],"Cómo llegar caminando":["Walking directions","Como chegar a pé"],"Cómo llegar en auto":["Driving directions","Como chegar de carro"],"Actualizar camino":["Update route","Atualizar caminho"],"Favorito":["Favorite","Favorito"],"Guardado":["Saved","Salvo"],"Compartir":["Share","Compartilhar"],"Ver pasos":["See steps","Ver etapas"],"Volver a centrar":["Re-center","Centralizar"],"Foto con marco del Bioparque":["Photo with the Bioparque frame","Foto com moldura do Bioparque"],"Bienvenido al Bioparque Temaikèn":["Welcome to Bioparque Temaikèn","Bem-vindo ao Bioparque Temaikèn"],"Tu guía para recorrer el parque desde el celular.":["Your guide to explore the park from your phone.","Seu guia para percorrer o parque pelo celular."],"Mirá dónde estás":["See where you are","Veja onde você está"],"Activá la ubicación: el mapa detecta solo si estás dentro o fuera del parque":["Turn on location: the map knows if you are inside or outside the park","Ative a localização: o mapa detecta se você está dentro ou fora do parque"],"Buscá un animal":["Find an animal","Encontre um animal"],"Tigres, hipopótamos, lémures, aves y más":["Tigers, hippos, lemurs, birds and more","Tigres, hipopótamos, lêmures, aves e mais"],"Llegá caminando":["Walk there","Chegue a pé"],"Te marcamos el camino por los senderos":["We show you the way along the paths","Mostramos o caminho pelas trilhas"],"Activar mi ubicación y empezar":["Turn on my location and start","Ativar minha localização e começar"],"Ver el mapa sin ubicación":["See the map without location","Ver o mapa sem localização"],"Mis favoritos":["My favorites","Meus favoritos"],"Lo que querés ver hoy, guardado en este celular.":["What you want to see today, saved on this phone.","O que você quer ver hoje, salvo neste celular."],"Clima en el Bioparque":["Weather at the Bioparque","Clima no Bioparque"],"¿Perdiste a alguien?":["Lost someone?","Perdeu alguém?"],"Entendido":["Got it","Entendi"],"Gastronomía":["Food","Gastronomia"],"Sanitarios":["Restrooms","Banheiros"],"Área del Bioparque":["Bioparque area","Área do Bioparque"],"Ingreso":["Entrance","Entrada"],"Servicio":["Service","Serviço"],"Seguí el camino marcado para llegar a su recinto.":["Follow the marked path to reach its enclosure.","Siga o caminho marcado para chegar ao recinto."],"Guardado en favoritos":["Saved to favorites","Salvo nos favoritos"],"Quitado de favoritos":["Removed from favorites","Removido dos favoritos"],"Link copiado":["Link copied","Link copiado"],"Hoy en el Bioparque":["Today at the Bioparque","Hoje no Bioparque"],"Importante":["Important","Importante"],"Actividades de hoy":["Today's activities","Atividades de hoje"],"Novedades":["News","Novidades"],"Novedad":["News","Novidade"],"Aviso importante":["Important notice","Aviso importante"],"Ver en el mapa":["See on the map","Ver no mapa"],"Ver en el mapa: ":["See on the map: ","Ver no mapa: "],"Por ahora no hay avisos. Volvé a mirar durante el día.":["No notices right now. Check again during the day.","Por enquanto não há avisos. Volte a olhar durante o dia."],"Recinto cerrado por hoy":["Enclosure closed today","Recinto fechado hoje"],"Cerrado por hoy":["Closed today","Fechado hoje"],"En descanso: puede que no lo veas ahora":["Resting: you may not see it right now","Descansando: talvez você não o veja agora"],"Puede haber demora":["There may be a wait","Pode haver espera"],"Dato curioso":["Fun fact","Curiosidade"],"Patrocinador":["Sponsor","Patrocinador"],"Patrocinador del Bioparque":["Bioparque sponsor","Patrocinador do Bioparque"],"Hoy":["Today","Hoje"],"en":["in","em"],"empezó hace":["started","começou há"],"ya pasó":["already over","já passou"],"Álbum de animales":["Animal album","Álbum de animais"],"Álbum":["Album","Álbum"],"figuritas":["stickers","figurinhas"],"Visitá cada recinto y abrí su ficha en el mapa: cuando estás cerca, la figurita se pega sola.":["Visit each enclosure and open its card on the map: when you are close, the sticker is added automatically.","Visite cada recinto e abra a ficha no mapa: quando você estiver perto, a figurinha é colada sozinha."],"¡Nueva figurita!":["New sticker!","Nova figurinha!"],"Figurita conseguida":["Sticker collected","Figurinha conseguida"],"¡Completaste el álbum!":["You completed the album!","Você completou o álbum!"],"Premio":["Prize","Prêmio"],"Compartir mi álbum":["Share my album","Compartilhar meu álbum"],"Acercate al recinto para conseguir la figurita":["Get closer to the enclosure to collect the sticker","Aproxime-se do recinto para conseguir a figurinha"],"Modo demo: las figuritas se pegan al abrir la ficha":["Demo mode: stickers are added when you open the card","Modo demo: as figurinhas são coladas ao abrir a ficha"],"Idioma":["Language","Idioma"]};
 const imgU=k=>API+'/img?b='+B+'&k='+k;
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const today=()=>new Date().toLocaleDateString('en-CA',{timeZone:'America/Argentina/Buenos_Aires'});
-const nowHM=()=>new Date().toLocaleTimeString('en-GB',{timeZone:'America/Argentina/Buenos_Aires',hour:'2-digit',minute:'2-digit'});
+const TZ='America/Argentina/Buenos_Aires';
+const today=()=>new Date().toLocaleDateString('en-CA',{timeZone:TZ});
+const nowHM=()=>new Date().toLocaleTimeString('en-GB',{timeZone:TZ,hour:'2-digit',minute:'2-digit'});
+const nowLocal=()=>today()+'T'+nowHM();
 let DATA=D0||SEED;if(!D0)try{const c=JSON.parse(localStorage.getItem(KD)||'null');if(c&&Array.isArray(c.news))DATA=c}catch(e){}
 const CAN={};POIS.forEach(p=>{if(CAN[p.n]==null)CAN[p.n]=p.id});
 const fichOf=p=>p&&DATA.fich?DATA.fich[CAN[p.n]]:null;
-const live=()=>(DATA.news||[]).filter(n=>n.on!==false&&(!n.e||n.e>=today()));
+const live=()=>(DATA.news||[]).filter(n=>n.on!==false&&(!n.e||n.e>=today())&&(!n.s||n.s<=nowLocal()));
 const CL={act:'#2563eb',alert:'#ea580c',info:'#2e9450'};
 const I={bell:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 1 12 0c0 5 2 6.5 2 6.5H4S6 14 6 9z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>',
  clk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>',
@@ -893,72 +925,139 @@ const I={bell:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
  info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.5"/></svg>',
  pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>',
  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
- star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 14.6 9l6 .7-4.5 4.1 1.2 5.9L12 16.8l-5.3 2.9 1.2-5.9L3.4 9.7l6-.7z"/></svg>'};
+ book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="m12 7 1.2 2.4 2.6.4-1.9 1.8.5 2.6L12 13l-2.4 1.2.5-2.6-1.9-1.8 2.6-.4z"/></svg>',
+ share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M5 12v8h14v-8"/></svg>'};
 
-// ---- campanita en la barra de arriba
+// =================== IDIOMAS ===================
+const LGS=['es','en','pt'],LGN={es:'ES',en:'EN',pt:'PT'};
+let LANG='es';try{LANG=localStorage.getItem(KL)||((navigator.language||'').slice(0,2)==='en'?'en':(navigator.language||'').slice(0,2)==='pt'?'pt':'es')}catch(e){}
+if(!LGS.includes(LANG))LANG='es';
+const L=s=>{if(LANG==='es')return s;const d=DICT[s];return d?d[LANG==='en'?0:1]:s};
+const TX=(o,f)=>(LANG!=='es'&&o&&o.tr&&o.tr[LANG]&&o.tr[LANG][f])||(o?o[f]:'')||'';
+const ORIG=new WeakMap(),TRACK=new Set();
+function trNode(n){if(n.nodeType!==3)return;const p=n.parentNode;if(!p||p.closest&&p.closest('script,style,#lvl,#lva,#lvf,#lvcu,#adc,#mal .alg'))return;
+ let o=ORIG.get(n);const cur=n.nodeValue,t=cur.trim();if(!t)return;
+ if(o==null||(cur!==o.v)){o={es:t,v:null};if(!DICT[t]){if(LANG==='es')return;return}ORIG.set(n,o);TRACK.add(n)}
+ const want=LANG==='es'?o.es:L(o.es);const nv=cur.replace(cur.trim(),want);if(nv!==cur){n.nodeValue=nv}o.v=n.nodeValue}
+function trTree(r){const w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode())trNode(n)}
+function trAttrs(){const q=$('q');if(q){if(!q.dataset.es)q.dataset.es=q.placeholder;q.placeholder=L(q.dataset.es)}}
+let obsBusy=false;const MO=new MutationObserver(ms=>{if(obsBusy||LANG==='es')return;obsBusy=true;try{ms.forEach(m=>{if(m.type==='characterData')trNode(m.target);else m.addedNodes.forEach(a=>a.nodeType===3?trNode(a):a.nodeType===1&&trTree(a))})}finally{obsBusy=false}});
+MO.observe(document.body,{childList:true,subtree:true,characterData:true});
+function setLang(l){LANG=l;try{localStorage.setItem(KL,l)}catch(e){}document.documentElement.lang=l;obsBusy=true;try{TRACK.forEach(n=>{if(!n.isConnected){TRACK.delete(n);return}trNode(n)});trTree(document.body);trAttrs()}finally{obsBusy=false}
+ lg.textContent=LGN[l];paintAlert();paintAlbBtn();if(cur&&$('sheet').classList.contains('on')&&!document.body.classList.contains('mini'))sheetLive(cur);if($('mlv').classList.contains('on'))openNews();if($('mal').classList.contains('on'))openAlb()}
+const lg=document.createElement('button');lg.className='lvl';lg.id='lvlg';lg.setAttribute('aria-label','Idioma / Language');lg.textContent=LGN[LANG];
+lg.addEventListener('pointerdown',e=>e.stopPropagation());
+lg.addEventListener('click',e=>{e.stopPropagation();const i=(LGS.indexOf(LANG)+1)%3;setLang(LGS[i]);toast({es:'Español',en:'English',pt:'Português'}[LGS[i]])});
+
+// =================== ESTADÍSTICAS (anónimas, sin datos personales) ===================
+const ST={sel:{},rt:{},ad:{},nw:0,alb:0,q:[]};let stDirty=false;
+const bump=(o,k)=>{o[k]=(o[k]||0)+1;stDirty=true};
+function flush(first){let vis=false;try{const k='tmk_v_'+today();if(!localStorage.getItem(k)){localStorage.setItem(k,'1');vis=true}}catch(e){}
+ if(!stDirty&&!vis)return;const body=Object.assign({},ST,vis?{v:1,h:+nowHM().slice(0,2),lg:LANG,dm:DEMO?1:0}:{});
+ const s=JSON.stringify(body);let ok=false;try{ok=navigator.sendBeacon(API+'/ev?b='+B,s)}catch(e){}if(!ok){try{fetch(API+'/ev?b='+B,{method:'POST',body:s,keepalive:true,mode:'cors'})}catch(e){}}
+ ST.sel={};ST.rt={};ST.ad={};ST.nw=0;ST.alb=0;ST.q=[];stDirty=false}
+setTimeout(()=>flush(true),4000);setInterval(flush,180000);document.addEventListener('visibilitychange',()=>{if(document.hidden)flush()});addEventListener('pagehide',()=>flush());
+$('bgo').addEventListener('click',()=>{if(cur)bump(ST.rt,CAN[cur.n])});
+let qT=0;$('q').addEventListener('input',()=>{clearTimeout(qT);qT=setTimeout(()=>{const v=$('q').value.trim();if(v.length>2&&$('res').querySelector('.empty')&&!ST.q.includes(v)&&ST.q.length<5){ST.q.push(v);stDirty=true}},1800)});
+
+// =================== CAMPANITA Y AVISOS ===================
 const bell=document.createElement('button');bell.className='lvb';bell.id='lvb';bell.setAttribute('aria-label','Avisos del día');bell.innerHTML=I.bell+'<i id="lvn"></i>';
-const loc=$('bloc');loc.parentNode.insertBefore(bell,loc);
+const loc=$('bloc');loc.parentNode.insertBefore(bell,loc);loc.parentNode.insertBefore(lg,bell);
 bell.addEventListener('click',e=>{e.stopPropagation();openNews()});bell.addEventListener('pointerdown',e=>e.stopPropagation());
-// ---- aviso importante
 const al=document.createElement('div');al.className='lva';al.id='lva';document.body.appendChild(al);
-// ---- modal de avisos
 const m=document.createElement('div');m.className='modal';m.id='mlv';
-m.innerHTML='<div class="card lvc"><button class="cl" data-c="mlv" aria-label="Cerrar">'+I.x+'</button><h2>Hoy en el Bioparque</h2><p class="s" id="lvs"></p><div id="lvl"></div></div>';
+m.innerHTML='<div class="card lvc"><button class="cl" data-c="mlv" aria-label="Cerrar">'+I.x+'</button><h2 id="lvt"></h2><p class="s" id="lvs"></p><div id="lvl"></div></div>';
 document.body.appendChild(m);m.querySelector('.cl').onclick=()=>m.classList.remove('on');m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('on')});
-function goPlace(id){const p=POIS.find(x=>x.id===id);if(!p)return;m.classList.remove('on');try{closeM&&document.querySelectorAll('.modal.on').forEach(x=>x.classList.remove('on'))}catch(e){}select(p)}
+const pName=p=>L(p.n);
+function goPlace(id){const p=POIS.find(x=>x.id===id);if(!p)return;document.querySelectorAll('.modal.on').forEach(x=>x.classList.remove('on'));select(p)}
 const mins=hm=>{const a=hm.split(':');return +a[0]*60+ +a[1]};
-function when(h){const d=mins(h)-mins(nowHM());if(d>60)return '';if(d>0)return ' · en '+d+' min';if(d>-60)return ' · empezó hace '+(-d||1)+' min';return ' · ya pasó'}
+function when(h){const d=mins(h)-mins(nowHM());if(d>60)return '';if(d>0)return ' · '+L('en')+' '+d+' min';if(d>-60)return ' · '+L('empezó hace')+' '+(-d||1)+' min';return ' · '+L('ya pasó')}
 function item(n){const p=n.p!=null?POIS.find(x=>x.id===n.p):null;const past=n.k==='act'&&n.h&&mins(n.h)-mins(nowHM())<=-60;
- const lbl=n.k==='act'&&n.h?I.clk+'Hoy '+n.h+' h'+when(n.h):n.k==='alert'?I.warn+'Aviso importante':I.info+'Novedad';
- return '<div class="lvi '+n.k+(past?' past':'')+'"><span class="tm" style="color:'+CL[n.k]+'">'+lbl+'</span><b>'+esc(n.t)+'</b>'+(n.x?'<p>'+esc(n.x)+'</p>':'')+(p?'<button class="lvg" data-p="'+p.id+'">'+I.pin+'Ver en el mapa: '+esc(p.n)+'</button>':'')+'</div>'}
-function openNews(){const L=live();const ord={alert:0,act:1,info:2};L.sort((a,b)=>ord[a.k]-ord[b.k]||(a.h||'99').localeCompare(b.h||'99')||String(b.d).localeCompare(String(a.d)));
- const pz=n=>n.k==='act'&&n.h&&mins(n.h)-mins(nowHM())<=-60?1:0;const A=L.filter(n=>n.k==='alert'),C=L.filter(n=>n.k==='act').sort((a,b)=>pz(a)-pz(b)),N=L.filter(n=>n.k==='info');
- const sec=(t,a)=>a.length?'<h6 class="lvh">'+t+'</h6>'+a.map(item).join(''):'';
- $('lvs').textContent=L.length?new Intl.DateTimeFormat('es-AR',{weekday:'long',day:'numeric',month:'long',timeZone:'America/Argentina/Buenos_Aires'}).format(new Date()).replace(/^./,c=>c.toUpperCase()):'';
- $('lvl').innerHTML=L.length?sec('Importante',A)+sec('Actividades de hoy',C)+sec('Novedades',N):'<div class="lve">Por ahora no hay avisos. Volvé a mirar durante el día.</div>';
+ const lbl=n.k==='act'&&n.h?I.clk+L('Hoy')+' '+n.h+' h'+when(n.h):n.k==='alert'?I.warn+L('Aviso importante'):I.info+L('Novedad');const x=TX(n,'x');
+ return '<div class="lvi '+n.k+(past?' past':'')+'"><span class="tm" style="color:'+CL[n.k]+'">'+lbl+'</span><b>'+esc(TX(n,'t'))+'</b>'+(x?'<p>'+esc(x)+'</p>':'')+(p?'<button class="lvg" data-p="'+p.id+'">'+I.pin+L('Ver en el mapa: ')+esc(pName(p))+'</button>':'')+'</div>'}
+function openNews(){const L0=live();const ord={alert:0,act:1,info:2};L0.sort((a,b)=>ord[a.k]-ord[b.k]||(a.h||'99').localeCompare(b.h||'99')||String(b.d).localeCompare(String(a.d)));
+ const pz=n=>n.k==='act'&&n.h&&mins(n.h)-mins(nowHM())<=-60?1:0;const A=L0.filter(n=>n.k==='alert'),C=L0.filter(n=>n.k==='act').sort((a,b)=>pz(a)-pz(b)),N=L0.filter(n=>n.k==='info');
+ const sec=(t,a)=>a.length?'<h6 class="lvh">'+L(t)+'</h6>'+a.map(item).join(''):'';
+ $('lvt').textContent=L('Hoy en el Bioparque');
+ $('lvs').textContent=L0.length?new Intl.DateTimeFormat({es:'es-AR',en:'en-US',pt:'pt-BR'}[LANG],{weekday:'long',day:'numeric',month:'long',timeZone:TZ}).format(new Date()).replace(/^./,c=>c.toUpperCase()):'';
+ $('lvl').innerHTML=L0.length?sec('Importante',A)+sec('Actividades de hoy',C)+sec('Novedades',N):'<div class="lve">'+L('Por ahora no hay avisos. Volvé a mirar durante el día.')+'</div>';
  $('lvl').querySelectorAll('.lvg').forEach(b=>b.onclick=()=>goPlace(+b.dataset.p));
- m.classList.add('on');try{localStorage.setItem(KS,L.map(n=>n.id+n.d).join('|'))}catch(e){}paintBell()}
-function paintBell(){const L=live();let seen='';try{seen=localStorage.getItem(KS)||''}catch(e){}const S=new Set(seen.split('|'));const un=L.filter(n=>!S.has(n.id+n.d)).length;
+ if(!m.classList.contains('on')){ST.nw++;stDirty=true}
+ m.classList.add('on');try{localStorage.setItem(KS,L0.map(n=>n.id+n.d).join('|'))}catch(e){}paintBell()}
+function paintBell(){const L0=live();let seen='';try{seen=localStorage.getItem(KS)||''}catch(e){}const S=new Set(seen.split('|'));const un=L0.filter(n=>!S.has(n.id+n.d)).length;
  const b=$('lvn');b.textContent=un>9?'9+':un;b.style.display=un?'':'none';bell.classList.toggle('new',!!un)}
 function paintAlert(){const A=live().filter(n=>n.k==='alert');let gone='';try{gone=localStorage.getItem(KA)||''}catch(e){}const a=A.find(n=>!gone.split('|').includes(n.id+n.d));
- if(!a){al.classList.remove('on');return}const p=a.p!=null?POIS.find(x=>x.id===a.p):null;
- al.innerHTML='<i>'+I.warn+'</i><div class="t"><b>'+esc(a.t)+'</b>'+(a.x?'<span>'+esc(a.x)+'</span>':'')+'<div class="r">'+(p?'<button class="g">Ver en el mapa</button>':'')+'<button class="o">Entendido</button></div></div>';
+ if(!a){al.classList.remove('on');return}const p=a.p!=null?POIS.find(x=>x.id===a.p):null;const x=TX(a,'x');
+ al.innerHTML='<i>'+I.warn+'</i><div class="t"><b>'+esc(TX(a,'t'))+'</b>'+(x?'<span>'+esc(x)+'</span>':'')+'<div class="r">'+(p?'<button class="g">'+L('Ver en el mapa')+'</button>':'')+'<button class="o">'+L('Entendido')+'</button></div></div>';
  try{al.style.top=(TOPH()+8)+'px'}catch(e){}al.classList.add('on');al.querySelector('.o').onclick=()=>{try{localStorage.setItem(KA,(gone?gone+'|':'')+a.id+a.d)}catch(e){}al.classList.remove('on');setTimeout(paintAlert,300)};
  const g=al.querySelector('.g');if(g)g.onclick=()=>{al.classList.remove('on');goPlace(p.id)}}
-// ---- marcadores cerrados / en descanso
 function paintMarks(){MK.forEach(mk=>{const f=fichOf(mk.p);mk.el.classList.toggle('lvx',!!f&&f.st==='closed');mk.el.classList.toggle('lvr',!!f&&f.st==='rest')})}
-// ---- patrocinador para un lugar
 const SL=p=>p.k==='animal'||p.k==='zone'?'animal':p.k==='food'?'food':['service','wc','water'].includes(p.k)?(p.i==='photo'?'view':'service'):p.k==='entrance'||p.k==='parking'?'entrance':p.k==='view'?'view':'';
 function adFor(p){const A=(DATA.ads||[]).filter(a=>a.on!==false);return A.find(a=>a.w.includes('p:'+p.id))||A.find(a=>a.w.includes('k:'+SL(p)))||null}
-// ---- ficha en la hoja del lugar
+
+// =================== ÁLBUM DE ANIMALES ===================
+const ANI=[];{const seen={};POIS.forEach(p=>{if((p.k==='animal'||p.k==='zone')&&p.s!==false&&!seen[p.n]){seen[p.n]=1;ANI.push(p)}});ANI.sort((a,b)=>(a.r+a.n).localeCompare(b.r+b.n))}
+let ALB=[];try{ALB=JSON.parse(localStorage.getItem(KG)||'[]')}catch(e){}
+const gameOn=()=>!DATA.game||DATA.game.on!==false;
+const albBtn=document.createElement('button');albBtn.className='lvab';albBtn.id='lvab';document.body.appendChild(albBtn);
+albBtn.onclick=()=>openAlb();
+function paintAlbBtn(){albBtn.style.display=gameOn()?'':'none';albBtn.innerHTML=I.book+'<span>'+L('Álbum')+' <b>'+ALB.length+'/'+ANI.length+'</b></span>'}
+const ma=document.createElement('div');ma.className='modal';ma.id='mal';ma.innerHTML='<div class="card alc"><button class="cl" aria-label="Cerrar">'+I.x+'</button><div id="alb"></div></div>';document.body.appendChild(ma);
+ma.querySelector('.cl').onclick=()=>ma.classList.remove('on');ma.addEventListener('click',e=>{if(e.target===ma)ma.classList.remove('on')});
+function openAlb(){const done=ALB.length>=ANI.length;const pr=DATA.game?TX(DATA.game,'pr'):'';const pct=Math.round(ALB.length/ANI.length*100);
+ let h='<div class="alh">'+I.book+'</div><h2>'+L('Álbum de animales')+'</h2><p class="s">'+(done?'':L('Visitá cada recinto y abrí su ficha en el mapa: cuando estás cerca, la figurita se pega sola.'))+'</p>';
+ if(DEMO)h+='<p class="aldm">'+L('Modo demo: las figuritas se pegan al abrir la ficha')+'</p>';
+ h+='<div class="alp"><div><b>'+ALB.length+'</b> / '+ANI.length+' '+L('figuritas')+'</div><i><em style="width:'+pct+'%"></em></i></div>';
+ if(done)h+='<div class="aldone"><b>'+L('¡Completaste el álbum!')+'</b>'+(pr?'<span>'+esc(pr)+'</span>':'')+'<small>'+new Date().toLocaleDateString({es:'es-AR',en:'en-US',pt:'pt-BR'}[LANG],{timeZone:TZ})+'</small></div>';
+ else if(pr)h+='<div class="alpr"><b>'+L('Premio')+'</b>'+esc(pr)+'</div>';
+ h+='<div class="alg">'+ANI.map(p=>{const got=ALB.includes(p.n);const c=colOf(p);return '<button class="als'+(got?' got':'')+'" data-id="'+p.id+'"><i style="'+(got?'background:'+c:'')+'">'+(got?(IC[p.i]||IC.paw):'?')+'</i><span>'+esc(pName(p))+'</span></button>'}).join('')+'</div>';
+ h+='<button class="alsh">'+I.share+L('Compartir mi álbum')+'</button>';
+ $('alb').innerHTML=h;
+ $('alb').querySelectorAll('.als').forEach(b=>b.onclick=()=>{const p=POIS.find(x=>x.id===+b.dataset.id);ma.classList.remove('on');if(p)select(p)});
+ $('alb').querySelector('.alsh').onclick=async()=>{const t={es:'¡Llevo '+ALB.length+' de '+ANI.length+' figuritas en el álbum del Bioparque Temaikèn!',en:'I have '+ALB.length+' of '+ANI.length+' stickers in the Bioparque Temaikèn album!',pt:'Tenho '+ALB.length+' de '+ANI.length+' figurinhas no álbum do Bioparque Temaikèn!'}[LANG];const url=location.origin+'/';
+  try{if(navigator.share){await navigator.share({title:'Temaikèn',text:t,url});return}}catch(e){}try{await navigator.clipboard.writeText(t+' '+url);toast(L('Link copiado'))}catch(e){}};
+ ma.classList.add('on')}
+function near(p){if(!(typeof myPos!=='undefined'&&myPos&&myPos.in))return false;const pts=POIS.filter(q=>q.n===p.n);return pts.some(q=>Math.hypot(q.p[0]-myPos.s[0],q.p[1]-myPos.s[1])/GEO.K<=60)}
+function tryStick(p){if(!gameOn()||!(p.k==='animal'||p.k==='zone')||ALB.includes(p.n))return false;if(!(DEMO||near(p)))return false;
+ ALB.push(p.n);try{localStorage.setItem(KG,JSON.stringify(ALB))}catch(e){}ST.alb++;stDirty=true;paintAlbBtn();
+ const pop=document.createElement('div');pop.className='lvpop';pop.innerHTML='<i style="background:'+colOf(p)+'">'+(IC[p.i]||IC.paw)+'</i><div><small>'+L('¡Nueva figurita!')+'</small><b>'+esc(pName(p))+'</b><span>'+ALB.length+' / '+ANI.length+'</span></div>';
+ document.body.appendChild(pop);setTimeout(()=>pop.classList.add('on'),30);setTimeout(()=>{pop.classList.remove('on');setTimeout(()=>pop.remove(),400)},2600);return true}
+// QR en el recinto: ?fig=<id> pega la figurita
+try{const fq=new URLSearchParams(location.search).get('fig');if(fq){const p=POIS.find(x=>x.id===+fq);if(p&&gameOn()&&!ALB.includes(p.n)&&(p.k==='animal'||p.k==='zone')){ALB.push(p.n);localStorage.setItem(KG,JSON.stringify(ALB));ST.alb++;stDirty=true;setTimeout(()=>{select(p);openAlb()},900)}}}catch(e){}
+
+// =================== FICHA EN LA HOJA ===================
 const fx=document.createElement('div');fx.id='lvf';$('sd').parentNode.insertBefore(fx,$('sd'));
-const _sel=select;select=function(p,fly){_sel(p,fly);sheetLive(p)};
+const _sel=select;select=function(p,fly){_sel(p,fly);if(p){bump(ST.sel,CAN[p.n]);tryStick(p)}sheetLive(p)};
 function sheetLive(p){if(!p)return;const f=fichOf(p);const an=p.k==='animal'||p.k==='zone';
  const acts=live().filter(n=>n.k==='act'&&n.p!=null&&POIS.some(q=>q.id===n.p&&q.n===p.n)).sort((a,b)=>(a.h||'').localeCompare(b.h||''));
  let h='';
- if(f&&f.img)h+='<img class="lvp" src="'+imgU(f.img)+'" alt="'+esc(p.n)+'">';
- if(f&&f.st&&f.st!=='ok')h+='<div class="lvst '+f.st+'">'+(f.st==='closed'?(an?'Recinto cerrado por hoy':'Cerrado por hoy'):(an?'En descanso: puede que no lo veas ahora':'Puede haber demora'))+'</div>';
- acts.forEach(n=>{h+='<div class="lvac">'+I.clk+'<span><b>Hoy '+esc(n.h)+' h</b> · '+esc(n.t)+'</span></div>'});
- if(f&&f.h)h+='<div class="lvac">'+I.clk+'<span>'+esc(f.h)+'</span></div>';
+ if(f&&f.img)h+='<img class="lvp" src="'+imgU(f.img)+'" alt="'+esc(pName(p))+'">';
+ if(f&&f.st&&f.st!=='ok')h+='<div class="lvst '+f.st+'">'+L(f.st==='closed'?(an?'Recinto cerrado por hoy':'Cerrado por hoy'):(an?'En descanso: puede que no lo veas ahora':'Puede haber demora'))+'</div>';
+ acts.forEach(n=>{h+='<div class="lvac">'+I.clk+'<span><b>'+L('Hoy')+' '+esc(n.h)+' h</b> · '+esc(TX(n,'t'))+'</span></div>'});
+ const fh=f?TX(f,'h'):'';if(fh)h+='<div class="lvac">'+I.clk+'<span>'+esc(fh)+'</span></div>';
+ if(an&&gameOn()){const got=ALB.includes(p.n);h+='<div class="lvsk'+(got?' got':'')+'">'+I.book+'<span>'+L(got?'Figurita conseguida':'Acercate al recinto para conseguir la figurita')+'</span></div>'}
  fx.innerHTML=h;
- const sd=$('sd');if(f&&f.x)sd.textContent=f.x;
+ const sd=$('sd');const fxx=f?TX(f,'x'):'';if(fxx)sd.textContent=fxx;
  let cu=$('lvcu');if(!cu){cu=document.createElement('div');cu.id='lvcu';sd.parentNode.insertBefore(cu,sd.nextSibling)}
- cu.innerHTML=f&&f.f?'<b>Dato curioso</b>'+esc(f.f):'';cu.style.display=f&&f.f?'':'none';
+ const ff=f?TX(f,'f'):'';cu.innerHTML=ff?'<b>'+L('Dato curioso')+'</b>'+esc(ff):'';cu.style.display=ff?'':'none';
  const e=$('adc'),a=adFor(p);
- if(!a){e.style.display='none'}else{e.style.display='';e.href=a.u||'#';if(a.u){e.target='_blank';e.rel='noopener sponsored'}else{e.removeAttribute('target')}
-  e.innerHTML='<i>'+(a.img?'<img src="'+imgU(a.img)+'" alt="">':'<svg viewBox="0 0 24 24" fill="none" stroke="#b7791f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg>')+'</i><div><small>Patrocinador</small><b>'+esc(a.t)+'</b>'+(a.s?'<span>'+esc(a.s)+'</span>':'')+'</div>';e.dataset.u=a.u||''}
+ if(!a){e.style.display='none'}else{e.style.display='';e.href=a.u||'#';e.dataset.id=a.id;if(a.u){e.target='_blank';e.rel='noopener sponsored'}else{e.removeAttribute('target')}
+  e.innerHTML='<i>'+(a.img?'<img src="'+imgU(a.img)+'" alt="">':'<svg viewBox="0 0 24 24" fill="none" stroke="#b7791f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg>')+'</i><div><small>'+L('Patrocinador')+'</small><b>'+esc(a.t)+'</b>'+(a.s?'<span>'+esc(a.s)+'</span>':'')+'</div>';e.dataset.u=a.u||''}
  const im=fx.querySelector('img');const fixH=()=>document.documentElement.style.setProperty('--shh',$('sheet').getBoundingClientRect().height+'px');if(im)im.onload=fixH;fixH()}
-$('adc').onclick=e=>{if(!e.currentTarget.dataset.u){e.preventDefault();toast('Patrocinador del Bioparque')}};
-// ---- aplicar datos
+$('adc').onclick=e=>{const t=e.currentTarget;if(t.dataset.id)bump(ST.ad,t.dataset.id);if(!t.dataset.u){e.preventDefault();toast(L('Patrocinador del Bioparque'))}};
+
+// =================== DATOS ===================
 function apply(d){if(!d||!Array.isArray(d.news))return;if(DATA.upd&&d.upd&&d.upd<DATA.upd)return;DATA=d.upd?d:SEED;try{localStorage.setItem(KD,JSON.stringify(DATA))}catch(e){}
- paintBell();paintAlert();paintMarks();if(cur&&$('sheet').classList.contains('on')&&!document.body.classList.contains('mini'))sheetLive(cur);if($('mlv').classList.contains('on'))openNews()}
+ paintBell();paintAlert();paintMarks();paintAlbBtn();if(cur&&$('sheet').classList.contains('on')&&!document.body.classList.contains('mini'))sheetLive(cur);if($('mlv').classList.contains('on'))openNews()}
 async function load(){try{const r=await fetch(API+'/data?b='+B,{cache:'no-store'});if(r.ok)apply(await r.json())}catch(e){}}
 try{const bc=new BroadcastChannel('tmk-live');bc.onmessage=e=>{if(e.data&&e.data.data)apply(e.data.data)}}catch(e){}
-paintBell();paintMarks();setTimeout(paintAlert,1200);load();setInterval(load,120000);
+paintBell();paintMarks();paintAlbBtn();setTimeout(paintAlert,1200);load();setInterval(load,120000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
 setInterval(()=>{if($('mlv').classList.contains('on'))return;paintBell();paintAlert()},60000);
+if(LANG!=='es')setTimeout(()=>setLang(LANG),50);
 }
 })();
 </script><!--/TMKLIVE-->
-<style>.updb{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 12px);z-index:60;display:flex;align-items:center;gap:10px;max-width:calc(100% - 24px);padding:12px 16px;border:0;border-radius:16px;background:#1f6f3f;color:#fff;font:800 14px Nunito,system-ui,sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.3);cursor:pointer;white-space:nowrap;width:max-content}.updb svg{width:20px;height:20px;flex:none}</style><script>(function(){var B='11162130';var shown=false;function chk(){if(shown)return;fetch(location.pathname+'?chk='+Date.now(),{cache:'no-store'}).then(function(r){return r.text()}).then(function(t){var m=t.match(/<meta name="nx-build" content="([0-9]+)"/);if(m&&m[1]>B){shown=true;var b=document.createElement('button');b.className='updb';b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Hay una versión nueva, tocá para actualizar';b.onclick=function(){b.textContent='Actualizando…';try{navigator.serviceWorker&&navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(x){x.update()})})}catch(e){}location.replace(location.pathname+'?v='+m[1]+location.hash)};document.body.appendChild(b)}}).catch(function(){})}setTimeout(chk,2500);setInterval(chk,10*60*1000);document.addEventListener('visibilitychange',function(){if(!document.hidden)chk()})})()</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "a8059f322e8f40e684d926ac94b56d82"}'></script></body>
+
+<style>.updb{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 12px);z-index:60;display:flex;align-items:center;gap:10px;max-width:calc(100% - 24px);padding:12px 16px;border:0;border-radius:16px;background:#1f6f3f;color:#fff;font:800 14px Nunito,system-ui,sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.3);cursor:pointer;white-space:nowrap;width:max-content}.updb svg{width:20px;height:20px;flex:none}</style><script>(function(){var B='11171026';var shown=false;function chk(){if(shown)return;fetch(location.pathname+'?chk='+Date.now(),{cache:'no-store'}).then(function(r){return r.text()}).then(function(t){var m=t.match(/<meta name="nx-build" content="([0-9]+)"/);if(m&&m[1]>B){shown=true;var b=document.createElement('button');b.className='updb';b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Hay una versión nueva, tocá para actualizar';b.onclick=function(){b.textContent='Actualizando…';try{navigator.serviceWorker&&navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(x){x.update()})})}catch(e){}location.replace(location.pathname+'?v='+m[1]+location.hash)};document.body.appendChild(b)}}).catch(function(){})}setTimeout(chk,2500);setInterval(chk,10*60*1000);document.addEventListener('visibilitychange',function(){if(!document.hidden)chk()})})()</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "a8059f322e8f40e684d926ac94b56d82"}'></script></body>
 </html>
