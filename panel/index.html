@@ -162,6 +162,7 @@ textarea.in{min-height:92px;resize:vertical;line-height:1.4}
 .lgc h2{text-align:center;font:700 25px/1.15 Fredoka,Nunito;color:var(--g)}
 .lgc>p{text-align:center;color:var(--mut);font-size:14px;margin:6px 0 16px}
 .lgc .bt{width:100%;margin-top:16px}
+.pww{position:relative}.pwt{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:11px;display:grid;place-items:center;color:var(--mut)}.pwt svg{width:21px;height:21px}.pwt.on{color:var(--g)}.pwt.on svg path{stroke-dasharray:none}
 .err{display:none;margin-top:10px;padding:10px 12px;border-radius:12px;background:#fef2f2;color:#991b1b;font:800 13px Nunito}.err.on{display:block}
 .lgf{margin-top:14px;text-align:center;font:700 11.5px Nunito;color:#94a39b}
 .banner{display:none;margin-top:10px;padding:11px 13px;border-radius:14px;background:#fff7e0;color:#7a5200;font:800 13px Nunito;box-shadow:inset 0 0 0 1.5px #fde68a}.banner.on{display:block}
@@ -198,7 +199,7 @@ textarea.in{min-height:92px;resize:vertical;line-height:1.4}
  <div class="leaf"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg></div>
  <h2>Panel del Bioparque</h2><p>Publicá avisos, fichas y patrocinadores en el mapa.</p>
  <div class="f"><label for="lu">Usuario</label><input class="in" id="lu" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required></div>
- <div class="f"><label for="lp">Contraseña</label><input class="in" id="lp" name="password" type="password" autocomplete="current-password" required></div>
+ <div class="f"><label for="lp">Contraseña</label><div class="pww"><input class="in" style="padding-right:50px" id="lp" name="password" type="password" autocomplete="current-password" required><button type="button" class="pwt" data-for="lp" aria-label="Mostrar contraseña"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
  <div class="err" id="lerr"></div>
  <button class="bt pri" id="lbt" type="submit">Entrar</button>
  <p class="lgf">Un desarrollo de Nexos</p>
@@ -288,11 +289,12 @@ setInterval(stIdle,30000);
 function showLogin(msg){$('lg').classList.add('on');const e=$('lerr');e.textContent=msg||'';e.classList.toggle('on',!!msg);setTimeout(()=>{try{$(($('lu').value?'lp':'lu')).focus()}catch(x){}},80)}
 $('lgf').onsubmit=async ev=>{ev.preventDefault();const b=$('lbt');b.disabled=true;b.textContent='Entrando…';
  try{const r=await fetch(API+'/login?b='+B,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({user:$('lu').value,pass:$('lp').value})});const d=await r.json().catch(()=>({}));
-  if(r.ok&&d.token){TOK={t:d.token,exp:d.exp};try{localStorage.setItem(KT,JSON.stringify(TOK))}catch(e){}$('lp').value='';$('lg').classList.remove('on');load(true)}
+  if(r.ok&&d.token){TOK={t:d.token,exp:d.exp};try{localStorage.setItem(KT,JSON.stringify(TOK))}catch(e){}$('lp').value='';$('lp').type='password';$('lg').classList.remove('on');load(true)}
   else if(r.status===429)showLogin('Demasiados intentos. Probá de nuevo en '+(d.min||15)+' minutos.');
   else showLogin('Usuario o contraseña incorrectos'+(d.quedan!=null&&d.quedan<4?' (quedan '+d.quedan+' intentos)':'')+'.')}
  catch(e){showLogin('No hay conexión. Revisá internet y probá de nuevo.')}
  b.disabled=false;b.textContent='Entrar'};
+document.querySelectorAll('.pwt').forEach(b=>b.onclick=()=>{const i=$(b.dataset.for);const v=i.type==='password';i.type=v?'text':'password';b.classList.toggle('on',v);b.setAttribute('aria-label',v?'Ocultar contraseña':'Mostrar contraseña');i.focus()});
 $('out').onclick=()=>{try{localStorage.removeItem(KT)}catch(e){}TOK=null;showLogin()};
 
 // ---------- datos
