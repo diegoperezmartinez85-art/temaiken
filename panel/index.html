@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1f6f3f">
+<title>Panel · Bioparque Temaikèn</title>
+<link rel="manifest" href="/panel/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/panel/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Panel Temaikèn">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--g:#1f6f3f;--g2:#2e9450;--sun:#f59e0b;--ink:#173226;--mut:#5b7266;--line:rgba(23,50,38,.12);--bg:#f2f6f3;--red:#dc2626;--blue:#2563eb}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%;background:var(--bg);color:var(--ink);font:500 15px/1.4 Nunito,system-ui,-apple-system,sans-serif}
+button,input,textarea,select{font:inherit;color:inherit}
+button{border:0;background:none;cursor:pointer}
+svg{display:block}
+.wrap{max-width:620px;margin:0 auto;padding:0 14px calc(env(safe-area-inset-bottom,0px) + 96px)}
+/* header */
+.hd{position:sticky;top:0;z-index:20;background:rgba(242,246,243,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:calc(env(safe-area-inset-top,0px) + 12px) 14px 10px;margin:0 -14px}
+.hdi{max-width:620px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.leaf{width:42px;height:42px;border-radius:14px;flex:none;display:grid;place-items:center;background:linear-gradient(135deg,#2e9450,#1f6f3f);box-shadow:0 6px 16px rgba(31,111,63,.35)}
+.leaf svg{width:25px;height:25px}
+.ttl .k{font:800 10.5px/1 Nunito;letter-spacing:2.2px;text-transform:uppercase;color:var(--g2)}
+.ttl .t{font:700 22px/1.05 Fredoka,Nunito;color:var(--g)}.ttl .t b{color:var(--sun);font-weight:700}
+.ttl .pn{display:inline-block;margin-left:6px;vertical-align:3px;font:800 10px Nunito;letter-spacing:1px;background:var(--sun);color:#3b2400;padding:3px 7px;border-radius:7px}
+.hda{margin-left:auto;display:flex;gap:8px}
+.pill{height:40px;padding:0 13px;border-radius:13px;display:flex;align-items:center;gap:7px;background:#fff;font:800 13px Nunito;box-shadow:0 3px 10px rgba(23,50,38,.1),inset 0 0 0 1.5px var(--line);text-decoration:none;color:var(--ink)}
+.pill svg{width:18px;height:18px}
+.pill{white-space:nowrap}.f>label.sr{display:flex}.nvi .tm svg{width:14px;height:14px;flex:none}
+.pill.ic{width:40px;padding:0;justify-content:center}
+.sts{max-width:620px;margin:8px auto 0;display:flex;align-items:center;gap:7px;font:700 12.5px Nunito;color:var(--mut)}
+.sts i{width:8px;height:8px;border-radius:50%;background:#22c55e;flex:none}
+.sts.busy i{background:var(--sun);animation:bl .8s infinite alternate}.sts.err i{background:var(--red)}
+@keyframes bl{to{opacity:.3}}
+/* views */
+.view{display:none;padding-top:6px}.view.on{display:block}
+.vh{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:10px 2px 12px}
+.vh h1{font:700 26px/1.1 Fredoka,Nunito;color:var(--ink)}
+.vh p{color:var(--mut);font-size:13.5px;margin-top:3px}
+.add{flex:none;height:44px;padding:0 15px;border-radius:14px;display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,#2e9450,#1f6f3f);color:#fff;font:800 14px Nunito;box-shadow:0 8px 18px rgba(31,111,63,.3)}
+.add svg{width:18px;height:18px}
+.grp{font:800 11px Nunito;letter-spacing:1.6px;text-transform:uppercase;color:var(--mut);margin:18px 4px 8px}
+.empty{padding:22px 16px;border-radius:18px;background:#fff;text-align:center;color:var(--mut);box-shadow:inset 0 0 0 1.5px var(--line)}
+.cd{background:#fff;border-radius:18px;padding:13px 14px;box-shadow:0 4px 14px rgba(23,50,38,.07),inset 0 0 0 1px var(--line);margin-bottom:10px}
+.cd.off{opacity:.55}
+.cdh{display:flex;align-items:flex-start;gap:11px}
+.tag{display:inline-flex;align-items:center;gap:5px;font:800 11px Nunito;padding:3px 8px;border-radius:8px;color:#fff;white-space:nowrap}
+.tag svg{width:12px;height:12px}
+.cd h3{font:800 16px/1.25 Nunito;margin-top:6px}
+.cd p{color:var(--mut);font-size:13.5px;margin-top:3px;white-space:pre-line}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.meta span{display:inline-flex;align-items:center;gap:4px;font:700 12px Nunito;color:#355046;background:#f1f6f2;padding:4px 8px;border-radius:8px}
+.meta svg{width:13px;height:13px}
+.cda{display:flex;gap:6px;margin-top:11px;padding-top:10px;border-top:1px solid #eef2ef}
+.cda button{height:36px;padding:0 11px;border-radius:11px;background:#f1f5f3;font:800 12.5px Nunito;display:flex;align-items:center;gap:5px}
+.cda button svg{width:15px;height:15px}
+.cda .dl{margin-left:auto;color:#b91c1c;background:#fef2f2}
+.cda .dl.sure{background:#dc2626;color:#fff}
+/* switch */
+.sw{position:relative;width:46px;height:28px;flex:none;border-radius:14px;background:#cfd8d3;transition:.2s}
+.sw::after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,.2);transition:.2s}
+.sw.on{background:var(--g2)}.sw.on::after{left:21px}
+/* fichas list */
+.sr{display:flex;align-items:center;gap:9px;height:48px;padding:0 14px;border-radius:16px;background:#fff;box-shadow:0 4px 14px rgba(23,50,38,.08),inset 0 0 0 1.5px var(--line)}
+.sr:focus-within{box-shadow:0 4px 14px rgba(23,50,38,.08),inset 0 0 0 2px var(--g2)}
+.sr svg{width:19px;height:19px;color:var(--mut);flex:none}
+.sr input{flex:1;min-width:0;border:0;outline:0;background:none;font:700 16px Nunito}
+.chips{display:flex;gap:7px;margin:10px 0 4px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;height:34px;padding:0 12px;border-radius:11px;background:#fff;font:800 13px Nunito;box-shadow:0 2px 8px rgba(23,50,38,.08),inset 0 0 0 1.5px var(--line)}
+.chip.on{background:var(--ink);color:#fff;box-shadow:0 5px 12px rgba(23,50,38,.25)}
+.fl{background:#fff;border-radius:18px;box-shadow:0 4px 14px rgba(23,50,38,.07),inset 0 0 0 1px var(--line);overflow:hidden;margin-top:8px}
+.fi{display:flex;align-items:center;gap:11px;width:100%;padding:10px 12px;text-align:left;border-top:1px solid #eef2ef}
+.fi:first-child{border-top:0}
+.fi:active{background:#f4f8f5}
+.fi .b{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;flex:none;overflow:hidden}
+.fi .b svg{width:20px;height:20px}.fi .b img{width:100%;height:100%;object-fit:cover}
+.fi .tx{flex:1;min-width:0}.fi .tx b{display:block;font:800 15px Nunito;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fi .tx span{font-size:12.5px;color:var(--mut)}
+.fi .st{flex:none;font:800 11px Nunito;padding:4px 8px;border-radius:8px}
+.st.ok{background:#e8f6ee;color:#166534}.st.rest{background:#fef3c7;color:#92400e}.st.closed{background:#fee2e2;color:#991b1b}
+.fi .ed{flex:none;width:8px;height:8px;border-radius:50%;background:var(--g2)}
+/* ad preview (same as map) */
+.adp{display:flex;gap:11px;align-items:center;padding:10px 12px;border-radius:14px;background:linear-gradient(135deg,#fff7e6,#fff);border:1px dashed #f5b84a}
+.adp i{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#ffe9bf;flex:none;overflow:hidden}.adp i svg{width:22px;height:22px}.adp i img{width:100%;height:100%;object-fit:contain;background:#fff}
+.adp small{display:block;font-weight:800;font-size:9.5px;letter-spacing:.9px;text-transform:uppercase;color:#b7791f}.adp b{display:block;font-weight:800;font-size:14px}.adp span{display:block;font-weight:700;font-size:12px;opacity:.65}
+.adr{display:flex;align-items:center;gap:10px}.adr .adp{flex:1;min-width:0}
+/* bottom nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.97);box-shadow:0 -6px 24px rgba(23,50,38,.1);padding:6px 10px calc(env(safe-area-inset-bottom,0px) + 6px)}
+.navi{max-width:620px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.nav button{height:56px;border-radius:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:800 12px Nunito;color:var(--mut);position:relative}
+.nav button svg{width:23px;height:23px}
+.nav button.on{color:var(--g);background:#e8f6ee}
+.nav .n{position:absolute;top:5px;left:calc(50% + 7px);min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--g2);color:#fff;font:800 10.5px/17px Nunito;text-align:center}
+/* editor sheet */
+.ov{position:fixed;inset:0;z-index:40;background:rgba(14,30,22,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .22s;display:flex;align-items:flex-end;justify-content:center}
+.ov.on{opacity:1;pointer-events:auto}
+.sh{width:100%;max-width:620px;max-height:94vh;overflow:auto;background:#fff;border-radius:26px 26px 0 0;padding:8px 16px calc(env(safe-area-inset-bottom,0px) + 16px);transform:translateY(40px);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.ov.on .sh{transform:none}
+@media (min-width:700px){.ov{align-items:center}.sh{border-radius:26px;max-height:90vh}}
+.grab{width:42px;height:5px;border-radius:3px;background:#d6ded9;margin:2px auto 10px}
+.shh{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.shh .b{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;color:#fff;flex:none}.shh .b svg{width:25px;height:25px}
+.shh h2{flex:1;font:700 22px/1.1 Fredoka,Nunito}
+.shh h2 small{display:block;font:800 12px Nunito;color:var(--mut);margin-top:3px}
+.x{width:38px;height:38px;border-radius:12px;background:#f1f5f3;display:grid;place-items:center;flex:none}.x svg{width:18px;height:18px}
+.f{margin-top:14px}
+.f>label,.lb{display:block;font:800 13px Nunito;margin:0 2px 6px}
+.lb small,.f>label small{font-weight:700;color:var(--mut)}
+.in{width:100%;border:0;outline:0;border-radius:14px;background:#f4f7f5;padding:12px 13px;font:700 15.5px Nunito;box-shadow:inset 0 0 0 1.5px var(--line)}
+.in:focus{background:#fff;box-shadow:inset 0 0 0 2px var(--g2)}
+textarea.in{min-height:92px;resize:vertical;line-height:1.4}
+.cnt{text-align:right;font:700 11.5px Nunito;color:#94a39b;margin-top:3px}
+.seg{display:grid;gap:7px}
+.seg.c3{grid-template-columns:repeat(3,1fr)}
+.seg button{min-height:46px;padding:8px 6px;border-radius:14px;background:#f4f7f5;font:800 13px/1.2 Nunito;box-shadow:inset 0 0 0 1.5px var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center}
+.seg button small{font:700 11px/1.2 Nunito;color:var(--mut)}
+.seg button svg{width:19px;height:19px}
+.seg button.on{background:#fff;box-shadow:inset 0 0 0 2.5px var(--c,var(--g2));color:var(--c,var(--g))}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pick{display:flex;flex-wrap:wrap;gap:7px}
+.pick button{height:38px;padding:0 12px;border-radius:12px;background:#f4f7f5;font:800 13px Nunito;box-shadow:inset 0 0 0 1.5px var(--line);display:flex;align-items:center;gap:6px}
+.pick button.on{background:#e8f6ee;color:var(--g);box-shadow:inset 0 0 0 2px var(--g2)}
+.pick button.on::before{content:"";width:14px;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f6f3f' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E") center/contain no-repeat}
+.ph{position:relative;border-radius:18px;overflow:hidden;background:#f4f7f5;box-shadow:inset 0 0 0 1.5px var(--line)}
+.ph img{display:block;width:100%;max-height:260px;object-fit:cover}
+.ph .up{width:100%;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--mut);font:800 14px Nunito}
+.ph .up svg{width:28px;height:28px;color:var(--g2)}
+.ph .pa{position:absolute;right:8px;bottom:8px;display:flex;gap:6px}
+.ph .pa button{height:34px;padding:0 11px;border-radius:11px;background:rgba(255,255,255,.95);font:800 12.5px Nunito;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+.ph.logo img{object-fit:contain;max-height:140px;padding:12px;background:#fff}
+.prv{margin-top:18px;padding:12px;border-radius:18px;background:#f6faf7;box-shadow:inset 0 0 0 1.5px var(--line)}
+.prv>small{display:block;font:800 11px Nunito;letter-spacing:1.4px;text-transform:uppercase;color:var(--mut);margin:0 2px 8px}
+.sha{position:sticky;bottom:calc(-16px - env(safe-area-inset-bottom,0px));margin:18px -16px 0;padding:12px 16px calc(env(safe-area-inset-bottom,0px) + 16px);background:linear-gradient(180deg,rgba(255,255,255,0),#fff 22%);display:grid;grid-template-columns:1fr 2fr;gap:9px}
+.bt{height:52px;border-radius:15px;font:800 15.5px Nunito;background:#f1f5f3;display:flex;align-items:center;justify-content:center;gap:8px}
+.bt.pri{background:linear-gradient(135deg,#2e9450,#1f6f3f);color:#fff;box-shadow:0 8px 20px rgba(31,111,63,.35)}
+.bt.pri:disabled{opacity:.6}
+.plist{max-height:230px;overflow:auto;border-radius:14px;box-shadow:inset 0 0 0 1.5px var(--line);margin-top:8px}
+.plist button{display:flex;align-items:center;gap:9px;width:100%;padding:8px 11px;text-align:left;border-top:1px solid #eef2ef;font:700 14px Nunito}
+.plist button:first-child{border-top:0}
+.plist i{width:24px;height:24px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff}.plist i svg{width:13px;height:13px}
+.plist button.on{background:#e8f6ee;color:var(--g)}
+.plist button.on::after{content:"";margin-left:auto;width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f6f3f' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E") center/contain no-repeat}
+.hint{font:700 12.5px Nunito;color:var(--mut);margin:6px 2px 0}
+/* news preview like map */
+.nvi{padding:12px 13px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line)}
+.nvi.alert{background:#fff7ed;box-shadow:inset 0 0 0 2px #fdba74}
+.nvi .tm{display:inline-flex;align-items:center;gap:5px;font:800 12px Nunito;color:var(--blue)}
+.nvi.alert .tm{color:#c2410c}
+.nvi b{display:block;font:800 15px Nunito;margin-top:2px}.nvi p{font-size:13.5px;color:var(--mut);margin-top:2px;white-space:pre-line}
+/* toast + login */
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 86px);transform:translate(-50%,10px);z-index:60;background:#173226;color:#fff;font:800 14px Nunito;padding:11px 16px;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:.25s;max-width:90vw;text-align:center;display:flex;align-items:center;gap:8px}
+.toast svg{width:18px;height:18px;color:#86efac;flex:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.lg{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:20px;background:radial-gradient(800px 500px at 20% 0%,#d9f0e1,transparent 60%),var(--bg)}
+.lg.on{display:flex}
+.lgc{width:100%;max-width:380px;background:#fff;border-radius:26px;padding:26px 20px 20px;box-shadow:0 24px 60px rgba(23,50,38,.18)}
+.lgc .leaf{width:62px;height:62px;border-radius:21px;margin:0 auto 12px}.lgc .leaf svg{width:36px;height:36px}
+.lgc h2{text-align:center;font:700 25px/1.15 Fredoka,Nunito;color:var(--g)}
+.lgc>p{text-align:center;color:var(--mut);font-size:14px;margin:6px 0 16px}
+.lgc .bt{width:100%;margin-top:16px}
+.err{display:none;margin-top:10px;padding:10px 12px;border-radius:12px;background:#fef2f2;color:#991b1b;font:800 13px Nunito}.err.on{display:block}
+.lgf{margin-top:14px;text-align:center;font:700 11.5px Nunito;color:#94a39b}
+.banner{display:none;margin-top:10px;padding:11px 13px;border-radius:14px;background:#fff7e0;color:#7a5200;font:800 13px Nunito;box-shadow:inset 0 0 0 1.5px #fde68a}.banner.on{display:block}
+</style>
+</head>
+<body>
+<div class="lg on" id="lg"><form class="lgc" id="lgf" autocomplete="on">
+ <div class="leaf"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg></div>
+ <h2>Panel del Bioparque</h2><p>Publicá avisos, fichas y patrocinadores en el mapa.</p>
+ <div class="f"><label for="lu">Usuario</label><input class="in" id="lu" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required></div>
+ <div class="f"><label for="lp">Contraseña</label><input class="in" id="lp" name="password" type="password" autocomplete="current-password" required></div>
+ <div class="err" id="lerr"></div>
+ <button class="bt pri" id="lbt" type="submit">Entrar</button>
+ <p class="lgf">Un desarrollo de Nexos</p>
+</form></div>
+
+<div class="wrap">
+ <header class="hd"><div class="hdi">
+  <div class="leaf"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg></div>
+  <div class="ttl"><div class="k">Bioparque</div><div class="t">Temaik<b>è</b>n<span class="pn">PANEL</span></div></div>
+  <div class="hda"><a class="pill" href="/?demo=1" target="tmkmap" id="vmap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 4-6 2v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Ver mapa</a><button class="pill ic" id="out" aria-label="Salir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg></button></div>
+ </div><div class="sts" id="sts"><i></i><span id="stt">Conectando…</span></div></header>
+ <div class="banner" id="seedb">Estos son contenidos de ejemplo. Editalos o borralos: al publicar quedan guardados.</div>
+ <div class="banner" id="pubb" style="background:#eff6ff;color:#1e3a8a;box-shadow:inset 0 0 0 1.5px #bfdbfe">Modo demo: lo que publiques se ve en el mapa de prueba (botón Ver mapa). Cuando se apruebe, lo activamos para todos los visitantes.</div>
+
+ <section class="view on" id="v-news">
+  <div class="vh"><div><h1>Avisos</h1><p>Lo que ven los visitantes en la campanita del mapa.</p></div><button class="add" id="nadd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Nuevo</button></div>
+  <div id="nlist"></div>
+ </section>
+
+ <section class="view" id="v-fich">
+  <div class="vh"><div><h1>Fichas</h1><p>Texto, foto y estado de cada animal y lugar.</p></div></div>
+  <label class="sr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg><input id="fq" placeholder="Buscar animal o lugar" autocomplete="off"></label>
+  <div class="chips" id="fch"></div>
+  <div class="fl" id="flist"></div>
+ </section>
+
+ <section class="view" id="v-ads">
+  <div class="vh"><div><h1>Patrocinadores</h1><p>Aparecen en la ficha de cada lugar del mapa.</p></div><button class="add" id="aadd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Nuevo</button></div>
+  <div id="alist"></div>
+ </section>
+</div>
+
+<nav class="nav"><div class="navi">
+ <button class="on" data-v="news"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 1 12 0c0 5 2 6.5 2 6.5H4S6 14 6 9z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>Avisos<i class="n" id="nn"></i></button>
+ <button data-v="fich"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="10" r="2.2"/><circle cx="10" cy="6" r="2.2"/><circle cx="14.5" cy="6" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/><path d="M12.2 11c-3 0-5.7 3.6-5.7 6.1 0 1.7 1.4 2.4 2.9 2.4 1.2 0 1.9-.6 2.8-.6s1.7.6 2.9.6c1.5 0 2.8-.7 2.8-2.4 0-2.5-2.6-6.1-5.7-6.1z"/></svg>Fichas</button>
+ <button data-v="ads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 14.6 9l6 .7-4.5 4.1 1.2 5.9L12 16.8l-5.3 2.9 1.2-5.9L3.4 9.7l6-.7z"/></svg>Patrocinios</button>
+</div></nav>
+
+<div class="ov" id="ov"><div class="sh" id="sh"></div></div>
+<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span></span></div>
+
+<script>
+const API='https://nexos-mapas.diegoperezmartinez85.workers.dev',B='temaiken',KT='tmk_ptok',KD='tmk_pdata';
+const SEED={"news":[{"id":"s1","k":"act","t":"Alimentación de los pelícanos","x":"Vení a ver cómo comen y escuchá a los cuidadores contar cómo viven.","h":"15:00","p":13,"e":"","on":true,"d":"2026-11-16T12:00:00.000Z"},{"id":"s2","k":"act","t":"Charla en el Hospital Veterinario","x":"Historias de animales rescatados y cómo se recuperan.","h":"11:30","p":74,"e":"","on":true,"d":"2026-11-16T12:00:00.000Z"},{"id":"s3","k":"info","t":"Llevá el mapa en tu celular","x":"Tocá Compartir y después Agregar a inicio. Funciona aunque no tengas señal dentro del parque.","h":"","p":null,"e":"","on":true,"d":"2026-11-16T12:00:00.000Z"}],"fich":{"26":{"x":"Es el felino más grande del mundo. Cada tigre tiene un dibujo de rayas único, como una huella digital.","f":"A diferencia de casi todos los gatos, le gusta el agua y es muy buen nadador.","h":"","st":"ok","img":""},"9":{"x":"Pasa gran parte del día dentro del agua para mantenerse fresco y proteger su piel del sol.","f":"Puede aguantar la respiración bajo el agua unos cinco minutos.","h":"","st":"ok","img":""},"24":{"x":"Es el felino más grande de América y está en peligro de extinción en la Argentina.","f":"Tiene una de las mordidas más fuertes entre todos los felinos.","h":"","st":"rest","img":""},"2":{"x":"Viven en grupos familiares. Mientras unas buscan comida, otra se para en dos patas y vigila.","f":"","h":"","st":"ok","img":""}},"ads":[{"id":"a1","on":true,"t":"Combo familiar con bebida","s":"Patio de comidas · 15% mostrando el mapa","u":"","img":"","w":["k:food"]},{"id":"a2","on":true,"t":"Agua fresca y protector solar","s":"Tienda del Bioparque · 2x1 en botellas","u":"","img":"","w":["k:service"]},{"id":"a3","on":true,"t":"Tu marca acompaña a este recinto","s":"Patrocinio de la conservación de la especie","u":"","img":"","w":["k:animal"]},{"id":"a4","on":true,"t":"Imprimí tu foto con el marco del Bioparque","s":"Tienda de fotos · en el momento","u":"","img":"","w":["k:view"]},{"id":"a5","on":true,"t":"Un beneficio para tu próxima visita","s":"Cortesía de un patrocinador del Bioparque","u":"","img":"","w":["k:entrance"]}],"upd":null};
+const PL=[{"id":0,"n":"Cebras","k":"animal","i":"mam","r":"africa","s":true},{"id":1,"n":"Mono carayá","k":"animal","i":"mam","r":"america","s":true},{"id":2,"n":"Suricatas","k":"animal","i":"mam","r":"africa","s":true},{"id":3,"n":"Murciélagos","k":"animal","i":"bat","r":"america","s":true},{"id":4,"n":"Avestruz","k":"animal","i":"bird","r":"africa","s":true},{"id":5,"n":"Antílope eland","k":"animal","i":"mam","r":"africa","s":true},{"id":6,"n":"Cebras","k":"animal","i":"mam","r":"africa","s":true},{"id":7,"n":"Canguros","k":"animal","i":"mam","r":"oceania","s":true},{"id":8,"n":"Ciervo de los pantanos","k":"animal","i":"mam","r":"america","s":true},{"id":9,"n":"Hipopótamos","k":"animal","i":"mam","r":"africa","s":true},{"id":10,"n":"Lemur rojo","k":"animal","i":"mam","r":"africa","s":true},{"id":11,"n":"Lemur de cola anillada","k":"animal","i":"mam","r":"africa","s":true},{"id":12,"n":"Lemur blanco y negro","k":"animal","i":"mam","r":"africa","s":true},{"id":13,"n":"Pelícanos","k":"animal","i":"bird","r":"america","s":true},{"id":14,"n":"Suricatas","k":"animal","i":"mam","r":"africa","s":true},{"id":15,"n":"Tiburones","k":"animal","i":"fish","r":"acuario","s":true},{"id":16,"n":"Ualabíes","k":"animal","i":"mam","r":"oceania","s":true},{"id":17,"n":"Baños","k":"wc","i":"wc","r":"otros","s":true},{"id":18,"n":"Baños","k":"wc","i":"wc","r":"otros","s":true},{"id":19,"n":"Bebedero","k":"water","i":"water","r":"otros","s":true},{"id":20,"n":"Baños","k":"wc","i":"wc","r":"otros","s":true},{"id":21,"n":"Flamenco caribeño","k":"animal","i":"bird","r":"america","s":true},{"id":22,"n":"Águila mora","k":"animal","i":"bird","r":"america","s":true},{"id":23,"n":"Carpinchos","k":"animal","i":"mam","r":"america","s":true},{"id":24,"n":"Yaguareté","k":"animal","i":"mam","r":"america","s":true},{"id":25,"n":"Tapires","k":"animal","i":"mam","r":"america","s":true},{"id":26,"n":"Tigre de bengala","k":"animal","i":"mam","r":"asia","s":true},{"id":27,"n":"Aligátores","k":"animal","i":"rep","r":"america","s":true},{"id":28,"n":"Aves de América","k":"animal","i":"bird","r":"aves","s":true},{"id":29,"n":"Aves de Eurasia","k":"animal","i":"bird","r":"aves","s":true},{"id":30,"n":"Aves de Oceanía","k":"animal","i":"bird","r":"aves","s":true},{"id":31,"n":"Aves de África","k":"animal","i":"bird","r":"aves","s":true},{"id":32,"n":"Casuarios","k":"animal","i":"bird","r":"aves","s":true},{"id":33,"n":"Cóndores","k":"animal","i":"bird","r":"patagonia","s":true},{"id":34,"n":"Guacamayos","k":"animal","i":"bird","r":"aves","s":true},{"id":35,"n":"Loros","k":"animal","i":"bird","r":"aves","s":true},{"id":36,"n":"Paseriformes","k":"animal","i":"bird","r":"aves","s":true},{"id":37,"n":"Tucanes","k":"animal","i":"bird","r":"aves","s":true},{"id":38,"n":"Bebedero","k":"water","i":"water","r":"otros","s":true},{"id":39,"n":"El molino","k":"service","i":"mill","r":"otros","s":false},{"id":40,"n":"Bebedero","k":"water","i":"water","r":"otros","s":true},{"id":41,"n":"Fotografía","k":"service","i":"photo","r":"otros","s":true},{"id":42,"n":"Tortuga Leopardo","k":"animal","i":"rep","r":"africa","s":true},{"id":43,"n":"Pudúes","k":"animal","i":"mam","r":"patagonia","s":true},{"id":44,"n":"Mara Patagónica","k":"animal","i":"mam","r":"patagonia","s":true},{"id":45,"n":"Pumas","k":"animal","i":"mam","r":"patagonia","s":true},{"id":46,"n":"Grulla Japonesa","k":"animal","i":"bird","r":"aves","s":true},{"id":47,"n":"Casuarios","k":"animal","i":"bird","r":"aves","s":true},{"id":48,"n":"Baños","k":"wc","i":"wc","r":"otros","s":true},{"id":49,"n":"Anfiteatro","k":"service","i":"theatre","r":"otros","s":true},{"id":50,"n":"Mirador","k":"view","i":"view","r":"otros","s":false},{"id":51,"n":"Gallinas","k":"animal","i":"farm","r":"chacra","s":true},{"id":52,"n":"Baños","k":"wc","i":"wc","r":"otros","s":true},{"id":53,"n":"Terneros","k":"animal","i":"farm","r":"chacra","s":true},{"id":54,"n":"Ovejas","k":"animal","i":"farm","r":"chacra","s":true},{"id":55,"n":"Cabras","k":"animal","i":"farm","r":"chacra","s":true},{"id":56,"n":"Vacas","k":"animal","i":"farm","r":"chacra","s":true},{"id":57,"n":"Mirador","k":"view","i":"view","r":"otros","s":false},{"id":58,"n":"Mirador","k":"view","i":"view","r":"otros","s":false},{"id":59,"n":"Mirador","k":"view","i":"view","r":"otros","s":false},{"id":60,"n":"Mirador","k":"view","i":"view","r":"otros","s":false},{"id":61,"n":"Mirador","k":"view","i":"view","r":"otros","s":false},{"id":62,"n":"Guanacos","k":"animal","i":"mam","r":"patagonia","s":true},{"id":63,"n":"Bebedero","k":"water","i":"water","r":"otros","s":true},{"id":64,"n":"Juegos infantiles","k":"service","i":"play","r":"otros","s":true},{"id":65,"n":"Área de picnic","k":"service","i":"picnic","r":"otros","s":true},{"id":66,"n":"Centro de Eventos","k":"service","i":"event","r":"otros","s":true},{"id":67,"n":"Cine 360°","k":"service","i":"cine","r":"otros","s":true},{"id":68,"n":"Munchi's","k":"food","i":"ice","r":"otros","s":true},{"id":69,"n":"Acuario","k":"zone","i":"fish","r":"acuario","s":true},{"id":70,"n":"Trixie","k":"food","i":"food","r":"otros","s":true},{"id":71,"n":"Munchi's","k":"food","i":"ice","r":"otros","s":true},{"id":72,"n":"Choique-Aike","k":"food","i":"food","r":"otros","s":true},{"id":73,"n":"Baños","k":"wc","i":"wc","r":"otros","s":true},{"id":74,"n":"Hospital Veterinario","k":"service","i":"vet","r":"otros","s":true},{"id":75,"n":"Atención al visitante","k":"service","i":"info","r":"otros","s":true},{"id":76,"n":"Almacén de Pizzas","k":"food","i":"food","r":"otros","s":true},{"id":77,"n":"Centro de Interpretación","k":"service","i":"info2","r":"otros","s":true},{"id":78,"n":"Palta","k":"food","i":"food","r":"otros","s":true},{"id":79,"n":"Parador Murciélagos","k":"food","i":"food","r":"otros","s":true},{"id":80,"n":"Baños","k":"wc","i":"wc","r":"otros","s":true},{"id":81,"n":"Recuerdos del Bioparque","k":"service","i":"shop","r":"otros","s":true},{"id":82,"n":"Parador Ceibo","k":"food","i":"food","r":"otros","s":true},{"id":83,"n":"El Cañadón","k":"food","i":"food","r":"otros","s":true},{"id":84,"n":"Baños","k":"wc","i":"wc","r":"otros","s":true},{"id":85,"n":"Bichos (insectos)","k":"animal","i":"bug","r":"otros","s":true},{"id":86,"n":"Calesita","k":"service","i":"carousel","r":"otros","s":true},{"id":87,"n":"El Noble","k":"food","i":"food","r":"otros","s":true},{"id":88,"n":"Parador del Lago","k":"food","i":"food","r":"otros","s":true},{"id":89,"n":"Baños","k":"wc","i":"wc","r":"otros","s":true},{"id":90,"n":"Parador 360","k":"food","i":"food","r":"otros","s":true},{"id":91,"n":"Parador Los Tilos","k":"food","i":"food","r":"otros","s":true},{"id":92,"n":"Plaza de las Sensaciones","k":"service","i":"play","r":"otros","s":true},{"id":93,"n":"Primeros auxilios","k":"service","i":"aid","r":"otros","s":true},{"id":94,"n":"Ingreso y salida","k":"entrance","i":"gate","r":"otros","s":true},{"id":95,"n":"Estacionamiento","k":"parking","i":"parking","r":"otros","s":true},{"id":96,"n":"Punto de foto","k":"service","i":"photo","r":"otros","s":true}];
+const REG={"africa": ["África", "#f59e0b"], "america": ["América", "#22a34a"], "asia": ["Asia", "#ef4444"], "oceania": ["Oceanía", "#8b5cf6"], "aves": ["El Lugar de las Aves", "#ec4899"], "patagonia": ["Patagonia", "#0891b2"], "acuario": ["Acuario", "#2563eb"], "chacra": ["La Chacra", "#c2410c"], "otros": ["Bioparque", "#65a30d"]};
+const IC={"paw":"<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><circle cx=\"6\" cy=\"10\" r=\"2.2\"/><circle cx=\"10\" cy=\"6\" r=\"2.2\"/><circle cx=\"14.5\" cy=\"6\" r=\"2.2\"/><circle cx=\"18.5\" cy=\"10\" r=\"2.2\"/><path d=\"M12.2 11c-3 0-5.7 4.3-5.7 6.4 0 1.8 1.5 2.6 3 2.6 1.1 0 1.8-.6 2.7-.6s1.6.6 2.7.6c1.5 0 3-.8 3-2.6 0-2.1-2.7-6.4-5.7-6.4z\"/></svg>","mam":"<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><circle cx=\"6\" cy=\"10\" r=\"2.2\"/><circle cx=\"10\" cy=\"6\" r=\"2.2\"/><circle cx=\"14.5\" cy=\"6\" r=\"2.2\"/><circle cx=\"18.5\" cy=\"10\" r=\"2.2\"/><path d=\"M12.2 11c-3 0-5.7 4.3-5.7 6.4 0 1.8 1.5 2.6 3 2.6 1.1 0 1.8-.6 2.7-.6s1.6.6 2.7.6c1.5 0 3-.8 3-2.6 0-2.1-2.7-6.4-5.7-6.4z\"/></svg>","bird":"<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M15.5 4.5a3 3 0 0 1 3 3v.3l2.5 1.2-2.6.9c-.4 4.6-3.8 8.1-8.4 8.6L8 21H6l1.4-2.6C4.6 17.4 3 15 3 12.2V11l3.4 1.4C8.2 9.3 10.1 7.5 12.5 7a3 3 0 0 1 3-2.5z\"/></svg>","fish":"<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M2.5 12s3.2-5.5 9.7-5.5c3.6 0 6.2 2.3 7.4 3.7L22 8v8l-2.4-2.2c-1.2 1.4-3.8 3.7-7.4 3.7C5.7 17.5 2.5 12 2.5 12z\"/><circle cx=\"8\" cy=\"11\" r=\"1.1\" fill=\"#000\" fill-opacity=\".35\"/></svg>","rep":"<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 5c-3.6 0-6.5 2.8-6.5 6.3 0 .6.1 1.1.2 1.7H4l-1.5 2.2L4 16.6l1.4-1.2c.8 1.1 2 2 3.3 2.6l-.4 2h2.3l.5-1.6c.3 0 .6.1.9.1s.6 0 .9-.1l.5 1.6h2.3l-.4-2c1.3-.6 2.5-1.5 3.3-2.6l1.4 1.2 1.5-1.4L20 13h-1.7c.1-.6.2-1.1.2-1.7C18.5 7.8 15.6 5 12 5z\"/></svg>","bug":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><ellipse cx=\"12\" cy=\"13.5\" rx=\"4.5\" ry=\"6\"/><path d=\"M12 7.5V19.5M9 5.5 7.5 3.5M15 5.5l1.5-2M7.5 11H4M7.5 15H4.5M16.5 11H20M16.5 15h3\"/></svg>","bat":"<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 8.5 10.7 6.5 10.5 9C8 8 5 8.6 2 11c2 .3 3 1.2 3.4 2.6 1-.8 2.4-.9 3.2-.2.5-.9 1.7-1.2 3.4-1.2s2.9.3 3.4 1.2c.8-.7 2.2-.6 3.2.2.4-1.4 1.4-2.3 3.4-2.6-3-2.4-6-3-8.5-2l-.2-2.5z\"/></svg>","farm":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 21V10l9-6 9 6v11\"/><path d=\"M8 21v-7h8v7M8 14l8 7M16 14l-8 7\"/></svg>","food":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 3v7a2 2 0 0 0 4 0V3M9 10v11M17 21V3c-2.2 1-3 3.6-3 6.5V13h3\"/></svg>","ice":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8 10a4 4 0 1 1 8 0\"/><path d=\"M7 10h10l-5 11z\"/></svg>","wc":"<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><circle cx=\"7\" cy=\"4.5\" r=\"2\"/><circle cx=\"17\" cy=\"4.5\" r=\"2\"/><path d=\"M5 8h4l.8 7H8.5V21h-3v-6H4.2zM14.5 8h5l2 7.5h-2.6V21h-3.8v-5.5h-2.6z\"/></svg>","water":"<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2.5S5.5 9.8 5.5 14.3a6.5 6.5 0 0 0 13 0C18.5 9.8 12 2.5 12 2.5z\"/></svg>","aid":"<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z\"/></svg>","info":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 11v6M12 7.5v.2\"/></svg>","info2":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5zM8 7h6M8 11h6\"/></svg>","shop":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2\"/></svg>","cine":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M7 5v14M17 5v14M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4\"/></svg>","vet":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z\"/><path d=\"M12 9.5v5M9.5 12h5\"/></svg>","event":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15\" rx=\"2\"/><path d=\"M8 3v4M16 3v4M3.5 10h17\"/></svg>","play":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 20V8l4-4 4 4v12M4 12h8M14 20l6-9M18 20h3\"/></svg>","carousel":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 9 12 4l9 5H3zM6 9v9M12 9v9M18 9v9M4 18h16\"/></svg>","theatre":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 19c3-5 15-5 18 0M5 8.5a7 3 0 0 0 14 0M5 8.5a7 3 0 0 1 14 0M12 5.5v6\"/></svg>","picnic":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 9h16M7 9l-3 11M17 9l3 11M6 15h12M12 4v5\"/></svg>","photo":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v12H4z\"/><circle cx=\"12\" cy=\"13.5\" r=\"3.5\"/></svg>","mill":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 12 8 3M12 12l9-1M12 12l-9 1M12 12l4 9M10 21h4l-2-9z\"/></svg>","view":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"7\" cy=\"15\" r=\"3.5\"/><circle cx=\"17\" cy=\"15\" r=\"3.5\"/><path d=\"M10.5 15h3M5 12l2-6h3l1 6M19 12l-2-6h-3l-1 6\"/></svg>","gate":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 21V10a9 6 0 0 1 18 0v11M7 21v-8M17 21v-8M12 21v-9\"/></svg>","parking":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3.5\" y=\"3.5\" width=\"17\" height=\"17\" rx=\"4\"/><path d=\"M9.5 17V7.5h3.5a3 3 0 0 1 0 6H9.5\"/></svg>"};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const clone=o=>JSON.parse(JSON.stringify(o));
+const today=()=>new Date().toLocaleDateString('en-CA',{timeZone:'America/Argentina/Buenos_Aires'});
+const imgU=k=>API+'/img?b='+B+'&k='+k;
+const KCOL={food:'#f97316',wc:'#0284c7',water:'#06b6d4',service:'#7c3aed',view:'#64748b',entrance:'#1f6f3f',parking:'#64748b'};
+const colOf=p=>p.k==='animal'||p.k==='zone'?REG[p.r][1]:(p.i==='aid'?'#dc2626':p.i==='ice'?'#ec4899':KCOL[p.k]||'#475569');
+const regOf=p=>p.k==='animal'||p.k==='zone'?REG[p.r][0]:p.k==='food'?'Gastronomía':p.k==='entrance'?'Ingreso':'Servicio';
+const icOf=p=>IC[p.i]||IC.paw;
+// fichas: una por nombre (las dos cebras comparten ficha); sin baños, bebederos ni miradores
+const FP=[];const CAN={};PL.forEach(p=>{if(['wc','water','view','parking'].includes(p.k)||p.n==='Punto de foto')return;if(CAN[p.n]==null){CAN[p.n]=p.id;FP.push(p)}});
+const byId={};PL.forEach(p=>byId[p.id]=p);
+const SPOTS=PL.filter(p=>p.s!==false&&!['wc','water'].includes(p.k));const seenN={};const PLACES=SPOTS.filter(p=>{if(seenN[p.n])return false;seenN[p.n]=1;return true}).sort((a,b)=>a.n.localeCompare(b.n));
+
+let TOK=null,DATA=null,saving=false,lastOk=null;
+try{const t=JSON.parse(localStorage.getItem(KT)||'null');if(t&&t.exp>Date.now()+60e3)TOK=t}catch(e){}
+try{const d=JSON.parse(localStorage.getItem(KD)||'null');if(d&&Array.isArray(d.news))DATA=d}catch(e){}
+let BC=null;try{BC=new BroadcastChannel('tmk-live')}catch(e){}
+
+function toast(t){const e=$('toast');e.querySelector('span').textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2400)}
+function status(kind,t){const s=$('sts');s.className='sts'+(kind?' '+kind:'');$('stt').textContent=t}
+function ago(iso){if(!iso)return '';const m=Math.round((Date.now()-new Date(iso))/60000);if(m<1)return 'recién';if(m<60)return 'hace '+m+' min';const h=Math.round(m/60);if(h<24)return 'hace '+h+' h';return new Date(iso).toLocaleDateString('es-AR',{day:'numeric',month:'short'})}
+function stIdle(){if(saving)return;status('',DATA&&DATA.upd?'Publicado · '+ago(DATA.upd):'Sin publicar todavía')}
+setInterval(stIdle,30000);
+
+// ---------- sesión
+function showLogin(msg){$('lg').classList.add('on');const e=$('lerr');e.textContent=msg||'';e.classList.toggle('on',!!msg);setTimeout(()=>{try{$(($('lu').value?'lp':'lu')).focus()}catch(x){}},80)}
+$('lgf').onsubmit=async ev=>{ev.preventDefault();const b=$('lbt');b.disabled=true;b.textContent='Entrando…';
+ try{const r=await fetch(API+'/login?b='+B,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({user:$('lu').value,pass:$('lp').value})});const d=await r.json().catch(()=>({}));
+  if(r.ok&&d.token){TOK={t:d.token,exp:d.exp};try{localStorage.setItem(KT,JSON.stringify(TOK))}catch(e){}$('lp').value='';$('lg').classList.remove('on');load(true)}
+  else if(r.status===429)showLogin('Demasiados intentos. Probá de nuevo en '+(d.min||15)+' minutos.');
+  else showLogin('Usuario o contraseña incorrectos'+(d.quedan!=null&&d.quedan<4?' (quedan '+d.quedan+' intentos)':'')+'.')}
+ catch(e){showLogin('No hay conexión. Revisá internet y probá de nuevo.')}
+ b.disabled=false;b.textContent='Entrar'};
+$('out').onclick=()=>{try{localStorage.removeItem(KT)}catch(e){}TOK=null;showLogin()};
+
+// ---------- datos
+async function load(force){try{const r=await fetch(API+'/data?b='+B+'&t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const d=await r.json();
+  if(saving)return;if(DATA&&DATA.upd&&d.upd&&d.upd<DATA.upd&&!force)return; // copia vieja del servidor
+  if(DATA&&DATA.upd&&d.upd&&d.upd<DATA.upd)return;
+  if(!d.upd){DATA=clone(SEED);$('seedb').classList.add('on')}else{DATA=d;$('seedb').classList.remove('on')}
+  try{localStorage.setItem(KD,JSON.stringify(DATA))}catch(e){}render();stIdle()}
+ catch(e){if(!DATA){DATA=clone(SEED);render()}status('err','Sin conexión: mostrando lo último guardado')}}
+async function save(msg){saving=true;status('busy','Publicando…');
+ try{const r=await fetch(API+'/save?b='+B,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(TOK&&TOK.t)},body:JSON.stringify(DATA)});
+  if(r.status===401){saving=false;status('err','Sesión vencida: entrá de nuevo para publicar');showLogin('Tu sesión venció. Entrá de nuevo y se publica lo que estabas haciendo.');save.pending=msg;return false}
+  if(!r.ok)throw 0;DATA=await r.json();try{localStorage.setItem(KD,JSON.stringify(DATA))}catch(e){}
+  try{BC&&BC.postMessage({data:DATA})}catch(e){}$('seedb').classList.remove('on');saving=false;render();stIdle();toast(msg||'Publicado en el mapa');return true}
+ catch(e){saving=false;status('err','No se pudo publicar. Revisá la conexión y probá de nuevo');toast('No se pudo publicar');return false}}
+const _ok=load;load=async f=>{await _ok(f);if(save.pending&&TOK){const m=save.pending;save.pending=null;save(m)}};
+
+async function upImg(file,maxSide,logo){const img=await new Promise((res,rej)=>{const u=URL.createObjectURL(file);const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=u});
+ let w=img.naturalWidth,h=img.naturalHeight;const k=Math.min(1,maxSide/Math.max(w,h));w=Math.round(w*k);h=Math.round(h*k);
+ const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');if(!logo){x.fillStyle='#fff';x.fillRect(0,0,w,h)}x.drawImage(img,0,0,w,h);
+ const type=logo?'image/png':'image/jpeg';let q=.84,blob;for(let i=0;i<6;i++){blob=await new Promise(r=>c.toBlob(r,type,q));if(blob.size<380*1024)break;if(logo){blob=await new Promise(r=>c.toBlob(r,'image/webp',.9));break}q-=.12}
+ const r=await fetch(API+'/img?b='+B,{method:'POST',headers:{'Content-Type':blob.type,'Authorization':'Bearer '+(TOK&&TOK.t)},body:blob});
+ if(r.status===401){showLogin('Tu sesión venció. Entrá de nuevo y volvé a subir la foto.');throw 0}if(!r.ok)throw 0;return (await r.json()).k}
+
+// ---------- navegación
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));scrollTo(0,0);try{sessionStorage.setItem('tmk_pv',b.dataset.v)}catch(e){}});
+try{const v=sessionStorage.getItem('tmk_pv');if(v){const b=document.querySelector('.nav button[data-v="'+v+'"]');b&&b.click()}}catch(e){}
+const ov=$('ov'),sh=$('sh');
+function openSh(html){sh.innerHTML='<div class="grab"></div>'+html;ov.classList.add('on');sh.scrollTop=0;document.body.style.overflow='hidden'}
+function closeSh(){ov.classList.remove('on');document.body.style.overflow=''}
+ov.addEventListener('click',e=>{if(e.target===ov)closeSh()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeSh()});
+const X='<button class="x" data-x aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>';
+function wire(){sh.querySelectorAll('[data-x]').forEach(b=>b.onclick=closeSh);sh.querySelectorAll('textarea.in,input.in[maxlength]').forEach(t=>{const c=t.parentNode.querySelector('.cnt');if(!c)return;const u=()=>c.textContent=t.value.length+' / '+t.maxLength;t.addEventListener('input',u);u()})}
+function delBtn(b,fn){b.onclick=()=>{if(!b.classList.contains('sure')){b.classList.add('sure');b.lastChild.textContent=' ¿Borrar?';setTimeout(()=>{if(b.isConnected){b.classList.remove('sure');b.lastChild.textContent=' Borrar'}},3000);return}fn()}}
+const SV={pen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>',del:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13"/></svg>',clk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>',pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>',cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>',cam:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.6-2.2h6.8L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.6"/></svg>',
+ leaf:'<path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/>',info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.5"/></svg>',warn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.3"/></svg>'};
+const NK={alert:['Aviso importante','#ea580c',SV.warn,'Arriba del mapa, para todos'],act:['Actividad del día','#2563eb',SV.clk,'Con horario y lugar'],info:['Novedad','#2e9450',SV.info,'En la campanita']};
+
+// ---------- AVISOS
+const fmtE=e=>{if(!e)return 'Sin vencimiento';if(e===today())return 'Solo hoy';const d=new Date(e+'T12:00:00');return 'Hasta el '+d.toLocaleDateString('es-AR',{day:'numeric',month:'short'})};
+const live=n=>n.on!==false&&(!n.e||n.e>=today());
+function newsCard(n){const k=NK[n.k]||NK.info;const p=n.p!=null?byId[n.p]:null;const vence=n.e&&n.e<today();
+ return '<div class="cd'+(live(n)?'':' off')+'" data-id="'+esc(n.id)+'"><div class="cdh"><div style="flex:1;min-width:0"><span class="tag" style="background:'+k[1]+'">'+k[2]+k[0]+'</span><h3>'+esc(n.t||'(sin título)')+'</h3>'+(n.x?'<p>'+esc(n.x)+'</p>':'')+
+ '<div class="meta">'+(n.h?'<span>'+SV.clk+n.h+' h</span>':'')+(p?'<span>'+SV.pin+esc(p.n)+'</span>':'')+'<span>'+SV.cal+(vence?'Vencido':fmtE(n.e))+'</span></div></div><button class="sw'+(n.on!==false?' on':'')+'" data-tg aria-label="Mostrar en el mapa"></button></div>'+
+ '<div class="cda"><button data-ed>'+SV.pen+' Editar</button><button class="dl" data-dl>'+SV.del+' Borrar</button></div></div>'}
+function renderNews(){const L=$('nlist');const N=DATA.news.slice();const ord={alert:0,act:1,info:2};
+ const act=N.filter(live),old=N.filter(n=>!live(n));act.sort((a,b)=>ord[a.k]-ord[b.k]||(a.h||'99').localeCompare(b.h||'99')||b.d.localeCompare(a.d));
+ $('nn').textContent=act.length||'';$('nn').style.display=act.length?'':'none';
+ L.innerHTML=(act.length?'<div class="grp">En el mapa ahora · '+act.length+'</div>'+act.map(newsCard).join(''):'<div class="empty">No hay avisos publicados. Tocá <b>Nuevo</b> para crear el primero.</div>')+(old.length?'<div class="grp">Ocultos o vencidos · '+old.length+'</div>'+old.map(newsCard).join(''):'');
+ L.querySelectorAll('.cd').forEach(c=>{const n=DATA.news.find(x=>x.id===c.dataset.id);c.querySelector('[data-ed]').onclick=()=>editNews(n);
+  c.querySelector('[data-tg]').onclick=e=>{const on=n.on===false;n.on=on;if(on&&n.e&&n.e<today())n.e='';renderNews();save(on?'Visible en el mapa':'Oculto del mapa')};
+  delBtn(c.querySelector('[data-dl]'),()=>{DATA.news=DATA.news.filter(x=>x!==n);renderNews();save('Aviso borrado')})})}
+function placeOpts(sel){return '<option value="">Sin lugar</option>'+PLACES.map(p=>'<option value="'+p.id+'"'+(sel===p.id?' selected':'')+'>'+esc(p.n)+' · '+esc(regOf(p))+'</option>').join('')}
+function editNews(n0){const isNew=!n0;const n=n0?clone(n0):{id:'',k:'info',t:'',x:'',h:'',p:null,e:'',on:true};
+ let eMode=!n.e?'none':n.e===today()?'today':'date';
+ openSh('<div class="shh"><h2>'+(isNew?'Nuevo aviso':'Editar aviso')+'<small>Se ve en el mapa apenas tocás Publicar</small></h2>'+X+'</div>'+
+ '<div class="f"><span class="lb">Tipo</span><div class="seg c3" id="nk">'+Object.entries(NK).reverse().map(([k,v])=>'<button data-k="'+k+'" style="--c:'+v[1]+'">'+v[2]+v[0]+'<small>'+v[3]+'</small></button>').join('')+'</div></div>'+
+ '<div class="f"><label for="nt">Título</label><input class="in" id="nt" maxlength="90" placeholder="Ej.: Alimentación de los pingüinos"><div class="cnt"></div></div>'+
+ '<div class="f"><label for="nx">Texto <small>(opcional)</small></label><textarea class="in" id="nx" maxlength="700" placeholder="Contá los detalles en pocas líneas"></textarea><div class="cnt"></div></div>'+
+ '<div class="row2"><div class="f" id="nhw"><label for="nh">Hora <small id="nhs">(opcional)</small></label><input class="in" id="nh" type="time"></div><div class="f"><label for="np">Lugar en el mapa</label><select class="in" id="np">'+placeOpts(n.p)+'</select></div></div>'+
+ '<div class="f"><span class="lb">Mostrar</span><div class="pick" id="ne"><button data-e="none">Siempre</button><button data-e="today">Solo hoy</button><button data-e="date">Hasta una fecha</button></div><input class="in" id="nd" type="date" style="margin-top:8px;display:none"></div>'+
+ '<div class="prv"><small>Así lo ve el visitante</small><div id="npv"></div></div>'+
+ '<div class="sha"><button class="bt" data-x>Cancelar</button><button class="bt pri" id="nsv">Publicar</button></div>');wire();
+ $('nt').value=n.t;$('nx').value=n.x;$('nh').value=n.h||'';$('nd').value=n.e&&eMode==='date'?n.e:'';$('nd').min=today();wire();
+ const paint=()=>{sh.querySelectorAll('#nk button').forEach(b=>b.classList.toggle('on',b.dataset.k===n.k));sh.querySelectorAll('#ne button').forEach(b=>b.classList.toggle('on',b.dataset.e===eMode));$('nd').style.display=eMode==='date'?'':'none';
+  $('nhs').textContent=n.k==='act'?'':'(opcional)';
+  const p=$('np').value?byId[+$('np').value]:null;const k=NK[n.k];const h=$('nh').value;
+  $('npv').innerHTML='<div class="nvi'+(n.k==='alert'?' alert':'')+'"><span class="tm" style="color:'+k[1]+'">'+(n.k==='act'&&h?SV.clk+'Hoy '+h+' h':k[2]+k[0])+'</span><b>'+esc($('nt').value||'Título del aviso')+'</b>'+($('nx').value?'<p>'+esc($('nx').value)+'</p>':'')+(p?'<p style="color:#1d4ed8;font-weight:800">Ver en el mapa: '+esc(p.n)+'</p>':'')+'</div>'};
+ sh.querySelectorAll('#nk button').forEach(b=>b.onclick=()=>{n.k=b.dataset.k;if(n.k==='act'&&eMode==='none'&&isNew)eMode='none';paint()});
+ sh.querySelectorAll('#ne button').forEach(b=>b.onclick=()=>{eMode=b.dataset.e;paint();if(eMode==='date')$('nd').focus()});
+ ['nt','nx','nh','np'].forEach(i=>$(i).addEventListener('input',paint));$('np').addEventListener('change',paint);paint();
+ if(isNew)setTimeout(()=>$('nt').focus(),250);
+ $('nsv').onclick=async()=>{const t=$('nt').value.trim();if(!t){$('nt').focus();toast('Escribí un título');return}
+  if(n.k==='act'&&!$('nh').value){$('nh').focus();toast('Poné la hora de la actividad');return}
+  if(eMode==='date'&&!$('nd').value){$('nd').focus();toast('Elegí hasta qué fecha');return}
+  n.t=t;n.x=$('nx').value.trim();n.h=$('nh').value;n.p=$('np').value?+$('np').value:null;n.e=eMode==='none'?'':eMode==='today'?today():$('nd').value;n.on=true;
+  if(isNew){n.id=Math.random().toString(36).slice(2,10);n.d=new Date().toISOString();DATA.news.unshift(n)}else{Object.assign(n0,n)}
+  $('nsv').disabled=true;closeSh();renderNews();save(isNew?'Aviso publicado en el mapa':'Aviso actualizado')}}
+$('nadd').onclick=()=>editNews(null);
+
+// ---------- FICHAS
+let fcat='animal';
+const FC=[['animal','Animales'],['food','Comida'],['service','Servicios'],['all','Todo']];
+$('fch').innerHTML=FC.map(c=>'<button class="chip" data-c="'+c[0]+'">'+c[1]+'</button>').join('');
+$('fch').querySelectorAll('.chip').forEach(b=>b.onclick=()=>{fcat=b.dataset.c;renderFich()});
+$('fq').addEventListener('input',()=>renderFich());
+const STL={ok:'Visible',rest:'En descanso',closed:'Cerrado'};
+const fOf=p=>DATA.fich[CAN[p.n]]||{};
+function renderFich(){$('fch').querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.c===fcat));
+ const q=$('fq').value.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+ const L=FP.filter(p=>(q?(p.n+' '+regOf(p)).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').includes(q):fcat==='all'||(fcat==='animal'?p.k==='animal'||p.k==='zone':fcat==='food'?p.k==='food':p.k!=='animal'&&p.k!=='zone'&&p.k!=='food'))).sort((a,b)=>a.n.localeCompare(b.n));
+ $('flist').innerHTML=L.length?L.map(p=>{const f=fOf(p);const st=f.st||'ok';const has=f.x||f.f||f.h||f.img;
+  return '<button class="fi" data-id="'+p.id+'"><span class="b" style="background:'+colOf(p)+'">'+(f.img?'<img src="'+imgU(f.img)+'" alt="" loading="lazy">':icOf(p))+'</span><span class="tx"><b>'+esc(p.n)+'</b><span>'+esc(regOf(p))+(has?' · con ficha':'')+'</span></span>'+(st!=='ok'?'<span class="st '+st+'">'+STL[st]+'</span>':'')+'</button>'}).join(''):'<div class="empty" style="box-shadow:none">No encontramos "'+esc($('fq').value)+'".</div>';
+ $('flist').querySelectorAll('.fi').forEach(b=>b.onclick=()=>editFich(byId[+b.dataset.id]))}
+function editFich(p){const id=CAN[p.n];const f=Object.assign({x:'',f:'',h:'',st:'ok',img:''},clone(DATA.fich[id]||{}));const an=p.k==='animal'||p.k==='zone';
+ const ST=an?[['ok','Visible','#2e9450','Se lo puede ver'],['rest','En descanso','#d97706','Puede no verse'],['closed','Cerrado','#dc2626','Recinto cerrado']]:[['ok','Abierto','#2e9450','Funciona normal'],['rest','Demora','#d97706','Puede haber espera'],['closed','Cerrado','#dc2626','Cerrado por hoy']];
+ openSh('<div class="shh"><span class="b" style="background:'+colOf(p)+'">'+icOf(p)+'</span><h2>'+esc(p.n)+'<small>'+esc(regOf(p))+'</small></h2>'+X+'</div>'+
+ '<div class="f"><span class="lb">Foto <small>(opcional)</small></span><div class="ph" id="fph"></div><input type="file" id="ffile" accept="image/*" hidden></div>'+
+ '<div class="f"><span class="lb">Estado hoy</span><div class="seg c3" id="fst">'+ST.map(s=>'<button data-s="'+s[0]+'" style="--c:'+s[2]+'">'+s[1]+'<small>'+s[3]+'</small></button>').join('')+'</div></div>'+
+ '<div class="f"><label for="fx">'+(an?'Sobre el animal':'Descripción')+'</label><textarea class="in" id="fx" maxlength="600" placeholder="'+(an?'Ej.: de dónde viene, cómo vive, qué come':'Ej.: qué se ofrece y horarios')+'"></textarea><div class="cnt"></div></div>'+
+ (an?'<div class="f"><label for="ff">Dato curioso <small>(opcional)</small></label><input class="in" id="ff" maxlength="220" placeholder="Algo que sorprenda a los chicos"><div class="cnt"></div></div>':'')+
+ '<div class="f"><label for="fh">'+(an?'Actividad o horario':'Horario')+' <small>(opcional)</small></label><input class="in" id="fh" maxlength="70" placeholder="'+(an?'Ej.: Alimentación todos los días 15 h':'Ej.: Abierto de 10 a 18 h')+'"><div class="cnt"></div></div>'+
+ '<p class="hint">'+(CAN[p.n]!==p.id||PL.filter(x=>x.n===p.n).length>1?'Esta ficha se muestra en todos los puntos del mapa llamados "'+esc(p.n)+'".':'')+'</p>'+
+ '<div class="sha"><button class="bt" data-x>Cancelar</button><button class="bt pri" id="fsv">Publicar</button></div>');
+ $('fx').value=f.x;if($('ff'))$('ff').value=f.f;$('fh').value=f.h;wire();
+ const segp=()=>sh.querySelectorAll('#fst button').forEach(b=>b.classList.toggle('on',b.dataset.s===f.st));segp();
+ sh.querySelectorAll('#fst button').forEach(b=>b.onclick=()=>{f.st=b.dataset.s;segp()});
+ photoBox($('fph'),$('ffile'),()=>f.img,k=>f.img=k,1400,false,'Subir foto del '+(an?'animal':'lugar'));
+ $('fsv').onclick=()=>{f.x=$('fx').value.trim();f.f=$('ff')?$('ff').value.trim():'';f.h=$('fh').value.trim();
+  if(f.x||f.f||f.h||f.img||f.st!=='ok')DATA.fich[id]=f;else delete DATA.fich[id];closeSh();renderFich();save('Ficha publicada en el mapa')}}
+function photoBox(box,inp,get,set,max,logo,label){const draw=()=>{const k=get();box.classList.toggle('logo',!!logo);
+  box.innerHTML=k?'<img src="'+imgU(k)+'" alt=""><div class="pa"><button data-c>Cambiar</button><button data-r style="color:#b91c1c">Quitar</button></div>':'<button class="up">'+SV.cam+label+'</button>';
+  const c=box.querySelector('.up,[data-c]');c.onclick=()=>inp.click();const r=box.querySelector('[data-r]');if(r)r.onclick=()=>{set('');draw()}};
+ inp.onchange=async()=>{const fl=inp.files&&inp.files[0];inp.value='';if(!fl)return;box.innerHTML='<div class="up">Subiendo…</div>';try{set(await upImg(fl,max,logo));draw();toast(logo?'Logo cargado':'Foto cargada')}catch(e){draw();toast('No se pudo subir la imagen')}};draw()}
+
+// ---------- PATROCINADORES
+const SLOT=[['k:animal','Recintos de animales'],['k:food','Gastronomía'],['k:service','Servicios'],['k:entrance','Ingreso'],['k:view','Miradores']];
+const ADI={leaf:SV.leaf};
+function adPrev(a){return '<div class="adp"><i>'+(a.img?'<img src="'+imgU(a.img)+'" alt="">':'<svg viewBox="0 0 24 24" fill="none" stroke="#b7791f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+SV.leaf+'</svg>')+'</i><div style="min-width:0"><small>Patrocinador</small><b>'+esc(a.t||'Nombre o promoción')+'</b>'+(a.s?'<span>'+esc(a.s)+'</span>':'')+'</div></div>'}
+function whereTxt(a){const k=a.w.filter(w=>w.startsWith('k:')).map(w=>(SLOT.find(s=>s[0]===w)||[,''])[1]);const p=a.w.filter(w=>w.startsWith('p:')).map(w=>byId[+w.slice(2)]).filter(Boolean).map(p=>p.n);return k.concat(p).join(', ')||'Sin ubicación: no se muestra'}
+function renderAds(){const L=$('alist');
+ L.innerHTML=DATA.ads.length?DATA.ads.map(a=>'<div class="cd'+(a.on!==false&&a.w.length?'':' off')+'" data-id="'+esc(a.id)+'"><div class="adr">'+adPrev(a)+'<button class="sw'+(a.on!==false?' on':'')+'" data-tg aria-label="Mostrar"></button></div><div class="meta">'+(a.u?'<span>Con link</span>':'')+'<span>'+SV.pin+esc(whereTxt(a))+'</span></div><div class="cda"><button data-ed>'+SV.pen+' Editar</button><button class="dl" data-dl>'+SV.del+' Borrar</button></div></div>').join(''):'<div class="empty">Todavía no hay patrocinadores. Tocá <b>Nuevo</b> para cargar el primero.</div>';
+ L.querySelectorAll('.cd').forEach(c=>{const a=DATA.ads.find(x=>x.id===c.dataset.id);c.querySelector('[data-ed]').onclick=()=>editAd(a);
+  c.querySelector('[data-tg]').onclick=()=>{a.on=a.on===false;renderAds();save(a.on?'Patrocinador visible':'Patrocinador oculto')};
+  delBtn(c.querySelector('[data-dl]'),()=>{DATA.ads=DATA.ads.filter(x=>x!==a);renderAds();save('Patrocinador borrado')})})}
+function editAd(a0){const isNew=!a0;const a=a0?clone(a0):{id:'',on:true,t:'',s:'',u:'',img:'',w:[]};
+ openSh('<div class="shh"><h2>'+(isNew?'Nuevo patrocinador':'Editar patrocinador')+'<small>Aparece en la ficha de los lugares que elijas</small></h2>'+X+'</div>'+
+ '<div class="f"><span class="lb">Logo <small>(opcional)</small></span><div class="ph" id="aph"></div><input type="file" id="afile" accept="image/*" hidden></div>'+
+ '<div class="f"><label for="at">Marca o promoción</label><input class="in" id="at" maxlength="60" placeholder="Ej.: Combo familiar con bebida"><div class="cnt"></div></div>'+
+ '<div class="f"><label for="as">Detalle <small>(opcional)</small></label><input class="in" id="as" maxlength="90" placeholder="Ej.: 15% mostrando el mapa en el patio de comidas"><div class="cnt"></div></div>'+
+ '<div class="f"><label for="au">Link <small>(opcional, al tocar el aviso)</small></label><input class="in" id="au" type="url" inputmode="url" placeholder="https://"></div>'+
+ '<div class="f"><span class="lb">Dónde aparece</span><div class="pick" id="aw">'+SLOT.map(s=>'<button data-w="'+s[0]+'">'+s[1]+'</button>').join('')+'</div>'+
+ '<p class="hint">O en lugares puntuales:</p><label class="sr" style="height:42px;margin-top:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg><input id="aq" placeholder="Buscar lugar" autocomplete="off" style="font-size:15px"></label><div class="plist" id="apl"></div></div>'+
+ '<div class="prv"><small>Así se ve en la ficha</small><div id="apv"></div></div>'+
+ '<div class="sha"><button class="bt" data-x>Cancelar</button><button class="bt pri" id="asv">Publicar</button></div>');
+ $('at').value=a.t;$('as').value=a.s;$('au').value=a.u;wire();
+ const pv=()=>{a.t=$('at').value;a.s=$('as').value;$('apv').innerHTML=adPrev(a)};
+ const pw=()=>sh.querySelectorAll('#aw button').forEach(b=>b.classList.toggle('on',a.w.includes(b.dataset.w)));
+ const tg=w=>{const i=a.w.indexOf(w);if(i<0)a.w.push(w);else a.w.splice(i,1)};
+ sh.querySelectorAll('#aw button').forEach(b=>b.onclick=()=>{tg(b.dataset.w);pw()});
+ const pl=()=>{const q=$('aq').value.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');const L=PLACES.filter(p=>!q||p.n.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').includes(q));
+  const sel=L.filter(p=>a.w.includes('p:'+p.id)),rest=L.filter(p=>!a.w.includes('p:'+p.id));
+  $('apl').innerHTML=sel.concat(rest).map(p=>'<button data-p="'+p.id+'" class="'+(a.w.includes('p:'+p.id)?'on':'')+'"><i style="background:'+colOf(p)+'">'+icOf(p)+'</i>'+esc(p.n)+'</button>').join('');
+  $('apl').querySelectorAll('button').forEach(b=>b.onclick=()=>{tg('p:'+b.dataset.p);b.classList.toggle('on')})};
+ $('aq').addEventListener('input',pl);['at','as'].forEach(i=>$(i).addEventListener('input',pv));pw();pl();pv();
+ photoBox($('aph'),$('afile'),()=>a.img,k=>{a.img=k;pv()},600,true,'Subir logo');
+ $('asv').onclick=()=>{a.t=$('at').value.trim();a.s=$('as').value.trim();let u=$('au').value.trim();if(u&&!/^https?:\/\//i.test(u))u='https://'+u;u=u.replace(/^http:/i,'https:');
+  if(!a.t&&!a.img){$('at').focus();toast('Poné el nombre de la marca o un logo');return}
+  if(u&&!/^https:\/\/[^\s"<>]+\.[^\s"<>]+$/i.test(u)){$('au').focus();toast('Revisá el link');return}
+  if(!a.w.length){toast('Elegí dónde aparece');return}a.u=u;
+  if(isNew){a.id=Math.random().toString(36).slice(2,10);DATA.ads.unshift(a)}else Object.assign(a0,a);closeSh();renderAds();save(isNew?'Patrocinador publicado':'Patrocinador actualizado')}}
+$('aadd').onclick=()=>editAd(null);
+
+function render(){if(!DATA)return;$('pubb').classList.toggle('on',!DATA.pub);renderNews();renderFich();renderAds()}
+if(DATA)render();
+if(!TOK)showLogin();else{$('lg').classList.remove('on');load()}
+setInterval(()=>{if(TOK&&!document.hidden&&!ov.classList.contains('on'))load()},60000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&TOK&&!ov.classList.contains('on'))load()});
+// si el panel corre dentro de la demo, avisa al mapa de al lado
+if('serviceWorker' in navigator&&location.hostname==='temaiken.nexosmaps.com'){navigator.serviceWorker.register('/sw.js').catch(()=>{})}
+</script>
+</body>
+</html>
